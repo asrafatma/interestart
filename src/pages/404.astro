@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page Not Found" description="The page you are looking for does not exist on InterestArt. Browse back to our home feed.">
+  <div class="error-container">
+    <div class="error-content">
+      <span class="error-code">404</span>
+      <h1>Art Study Lost in the Shadows</h1>
+      <p>
+        The page you are looking for has faded. It might have been renamed, moved, or is still waiting to be drawn in the studio.
+      </p>
+      <div class="error-actions">
+        <a href="/" class="cta-btn">Return to Home Feed</a>
+        <a href="/blog/" class="btn-secondary">Browse All Articles</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .error-container {
+    padding: 8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .error-content {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .error-code {
+    font-family: var(--font-serif);
+    font-size: 6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+  .error-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .error-content p {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+  .error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  @media (max-width: 500px) {
+    .error-actions {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+</style>

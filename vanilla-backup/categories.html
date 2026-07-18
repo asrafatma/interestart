@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories | InterestArt</title>
+  <meta name="description" content="Explore custom categories from fine art landscapes, dark charcoal studies, and pastel interior sketching, to DIY crafts and sculpture.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        InterestArt<span class="logo-dot"></span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Feed</a></li>
+        <li><a href="categories.html" class="nav-link active">Categories</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <a href="contact.html" class="cta-btn">Subscribe</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Categories Container -->
+  <main class="categories-container">
+    <div class="categories-intro">
+      <h1>Curated Art Spheres</h1>
+      <p>Dive deep into specific disciplines. Whether you seek the peaceful textures of cozy pastel sketching, the dramatic value shifts of deep charcoal studies, or technical art history essays—find your focus below.</p>
+    </div>
+
+    <!-- Categories Grid (Populated dynamically in main.js) -->
+    <div class="categories-showcase" id="categories-grid">
+      <!-- Category cards generated in JS -->
+    </div>
+  </main>
+
+  <!-- Weekly Newsletter Signup Section -->
+  <section class="newsletter-section">
+    <div class="newsletter-container">
+      <h2 class="newsletter-title">Inside the Artist's Studio</h2>
+      <p class="newsletter-desc">Get a weekly email filled with sketching exercises, digital drawing textures, and notes on art history directly in your inbox. No spam, just creative inspiration.</p>
+      
+      <form class="newsletter-form" id="newsletter-form">
+        <input type="email" placeholder="Your email address" required aria-label="Email address">
+        <button type="submit" class="cta-btn" style="padding: 1rem 2rem;">Join Studio</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <a href="index.html" class="logo">
+          InterestArt<span class="logo-dot"></span>
+        </a>
+        <p class="footer-desc" style="margin-top: 1rem; color: var(--text-secondary);">
+          A design-forward art blog by a software engineering student, showcasing the slow craft of fine art alongside modern digital creations.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-circle" aria-label="Pinterest">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M8 22c-.67 0-1.34-.14-1.93-.41-.53-.25-1-.62-1.38-1.07-.38-.45-.66-.98-.82-1.55-.16-.58-.21-1.22-.16-1.89l.86-9.84c.05-.59.21-1.16.48-1.68.27-.51.63-.96 1.07-1.32.44-.36.95-.62 1.51-.76C8.19 3.35 8.78 3.3 9.38 3.35c.78.07 1.54.29 2.22.66.68.37 1.25.88 1.69 1.5.44.62.74 1.34.87 2.11.13.77.1 1.56-.1 2.32l-1.3 4.96c-.15.58-.42 1.12-.79 1.58-.37.46-.84.82-1.38 1.05-.54.23-1.13.34-1.72.32-.59-.02-1.17-.18-1.68-.47L8 22z"></path></svg>
+          </a>
+          <a href="#" class="social-circle" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" class="social-circle" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Art Feed</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="about.html">About My Story</a></li>
+          <li><a href="contact.html">Work With Me</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Top Categories</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" onclick="localStorage.setItem('filter_cat', 'Aesthetic Pastel Sketches')">Aesthetic Pastel Sketches</a></li>
+          <li><a href="index.html" onclick="localStorage.setItem('filter_cat', 'High-Contrast Dark Charcoal Studies')">Charcoal Studies</a></li>
+          <li><a href="index.html" onclick="localStorage.setItem('filter_cat', 'Fine Art & Painting')">Fine Art & Painting</a></li>
+          <li><a href="index.html" onclick="localStorage.setItem('filter_cat', 'Digital Illustration')">Digital Illustration</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Cookie settings</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 InterestArt. Handcrafted with love.</p>
+      <p>Designed for GitHub & Vercel</p>
+    </div>
+  </footer>
+
+  <!-- Dynamic Status/Success Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h3 class="modal-title" id="modal-title-text">Success!</h3>
+      <p class="modal-text" id="modal-message-text">Your action has been recorded successfully.</p>
+      <button class="cta-btn" id="modal-close-btn" style="width: 100%;">Wonderful</button>
+    </div>
+  </div>
+
+  <script src="js/posts-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

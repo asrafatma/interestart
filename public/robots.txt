@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /drafts/
+Disallow: /404/
+
+Sitemap: https://interestart.example/sitemap-index.xml

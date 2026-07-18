@@ -1,0 +1,640 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { siteConfig } from '../../data/siteConfig';
+import '../../styles/article.css';
+
+// getStaticPaths generates SEO friendly paths at /blog/[slug]/
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => {
+    if (data.draft) return false;
+    const postDate = new Date(data.date);
+    const buildDate = new Date();
+    return postDate <= buildDate;
+  });
+
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post, allPosts: posts }
+  }));
+}
+
+const { post, allPosts } = Astro.props;
+const { Content, headings } = await render(post);
+
+// Related posts algorithm:
+// 1. Same category, excluding current post
+let related = allPosts.filter(p => p.data.category === post.data.category && p.id !== post.id);
+
+// 2. If fewer than 3, fill with posts that share tags
+if (related.length < 3) {
+  const currentTags = post.data.tags;
+  const remaining = allPosts.filter(p => 
+    p.id !== post.id && 
+    !related.some(r => r.id === p.id) &&
+    p.data.tags.some(t => currentTags.includes(t))
+  );
+  related = [...related, ...remaining];
+}
+
+// 3. Fallback to latest posts
+if (related.length < 3) {
+  const remaining = allPosts.filter(p => p.id !== post.id && !related.some(r => r.id === p.id));
+  related = [...related, ...remaining];
+}
+
+const relatedPosts = related.slice(0, 3);
+
+// Previous/Next post navigation
+const currentIndex = allPosts.findIndex(p => p.id === post.id);
+const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+
+// JSON-LD structured data for search engine rich results
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": new URL(post.data.heroImage, siteConfig.siteUrl).href,
+  "datePublished": post.data.date,
+  "dateModified": post.data.updatedDate || post.data.date,
+  "author": {
+    "@type": "Person",
+    "name": post.data.author,
+    "url": new URL("/about/", siteConfig.siteUrl).href
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": siteConfig.siteName,
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL("/favicon.svg", siteConfig.siteUrl).href
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": new URL(`/blog/${post.id}/`, siteConfig.siteUrl).href
+  }
+};
+
+const authorInitials = post.data.author.split(' ').map(n => n[0]).join('');
+---
+
+<Layout 
+  title={post.data.title} 
+  description={post.data.description} 
+  ogImage={post.data.ogImage || post.data.heroImage}
+  type="article"
+  publishedTime={post.data.date}
+  modifiedTime={post.data.updatedDate}
+  section={post.data.category}
+  jsonLd={jsonLd}
+>
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="post-reading-progress" aria-hidden="true"></div>
+
+  <!-- Cinematic Post Header -->
+  <div class="post-cinematic-header">
+    <div class="post-header-bg">
+      <img src={post.data.heroImage} alt={post.data.heroAlt} />
+    </div>
+    <div class="post-header-overlay" aria-hidden="true"></div>
+    
+    <div class="post-header-container">
+      <nav class="post-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Feed</a>
+        <span aria-hidden="true">/</span>
+        <a href={`/${post.data.categorySlug}/`}>{post.data.category}</a>
+      </nav>
+      
+      <h1 class="post-detail-title">{post.data.title}</h1>
+      
+      <div class="post-detail-meta">
+        <div class="post-meta-item">
+          <span class="post-meta-avatar" aria-hidden="true">{authorInitials}</span>
+          <span>By {post.data.author}</span>
+        </div>
+        <div class="post-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>{post.data.displayDate}</span>
+        </div>
+        <div class="post-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>{post.data.readTime}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Layout -->
+  <div class="post-layout">
+    <!-- Main Body Column -->
+    <div class="post-content">
+      <!-- Table of Contents (for longer posts) -->
+      {post.data.toc && headings.length > 0 && (
+        <nav class="article-toc" aria-labelledby="toc-title">
+          <h2 id="toc-title">Table of Contents</h2>
+          <ul>
+            {headings.filter(h => h.depth <= 3).map(h => (
+              <li class={`toc-depth-${h.depth}`}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
+      <!-- Article content body -->
+      <article class="post-body">
+        <Content />
+      </article>
+
+      <!-- Optional Hidden Pinterest Reference -->
+      {post.data.pinterestImage && (
+        <div class="pinterest-pin-meta" style="display:none;" aria-hidden="true">
+          <img src={post.data.pinterestImage} alt={`Pinterest graphic: ${post.data.title}`} />
+        </div>
+      )}
+
+      <!-- Share Buttons -->
+      <div class="share-box">
+        <h4>Share Study</h4>
+        <div class="share-buttons">
+          <a href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(new URL(post.data.heroImage, siteConfig.siteUrl).href)}&description=${encodeURIComponent(post.data.description)}`} target="_blank" rel="noopener noreferrer" class="share-btn pin-share" aria-label="Share on Pinterest">
+            Pinterest
+          </a>
+          <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="share-btn twitter-share" aria-label="Share on Twitter">
+            Twitter
+          </a>
+        </div>
+      </div>
+
+      <!-- Prev/Next Navigation -->
+      <nav class="post-navigation-links" aria-label="Article navigation">
+        <div class="nav-prev">
+          {prevPost && (
+            <a href={`/blog/${prevPost.id}/`}>
+              <span class="nav-direction">&larr; Previous</span>
+              <span class="nav-post-title">{prevPost.data.title}</span>
+            </a>
+          )}
+        </div>
+        <div class="nav-next">
+          {nextPost && (
+            <a href={`/blog/${nextPost.id}/`}>
+              <span class="nav-direction">Next &rarr;</span>
+              <span class="nav-post-title">{nextPost.data.title}</span>
+            </a>
+          )}
+        </div>
+      </nav>
+
+      <!-- Comments System -->
+      <section class="comments-section" aria-labelledby="comments-section-title">
+        <h3 id="comments-section-title">Discussion</h3>
+        
+        <!-- Status panels -->
+        <div id="comment-success" class="status-panel success" role="alert">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div>
+            <strong>Comment Submitted (Demo Mode)!</strong>
+            <p style="font-size:0.85rem; margin-top:0.25rem;">Comments database is disabled for the initial launch. Your comment passed validation successfully.</p>
+          </div>
+        </div>
+
+        <div id="comment-error" class="status-panel error" role="alert">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span id="comment-error-text">Please enter a valid comment.</span>
+        </div>
+
+        <form id="article-comment-form" novalidate>
+          <div class="form-group">
+            <label for="comment-name">Name</label>
+            <input type="text" id="comment-name" placeholder="Elena Vance" required aria-required="true" />
+          </div>
+          <div class="form-group">
+            <label for="comment-text">Comment</label>
+            <textarea id="comment-text" rows="4" placeholder="Join the discussion, share feedback, or ask a question about this technique..." required aria-required="true"></textarea>
+          </div>
+          <button type="submit" class="cta-btn">Post Comment</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- Sticky Sidebar Column -->
+    <aside class="post-sidebar">
+      <!-- Author Box -->
+      <div class="sidebar-widget sidebar-author">
+        <div class="sidebar-author-avatar">{siteConfig.author.avatarInitials}</div>
+        <h3>{siteConfig.author.name}</h3>
+        <p>{siteConfig.author.description}</p>
+        <a href="/about/" class="btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem; border-radius: var(--radius-sm);">My Profile</a>
+      </div>
+
+      <!-- Table of Contents in Sidebar (Visible only on desktop) -->
+      {post.data.toc && headings.length > 0 && (
+        <div class="sidebar-widget toc-widget">
+          <h3>On This Page</h3>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; padding:0;">
+            {headings.filter(h => h.depth <= 3).map(h => (
+              <li style={`padding-left: ${(h.depth - 2) * 0.75}rem`}>
+                <a href={`#${h.slug}`} style="font-size:0.9rem; color:var(--color-text-muted);" class="toc-sidebar-link">{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Tags Widget -->
+      <div class="sidebar-widget">
+        <h3>Tags</h3>
+        <div class="sidebar-tags">
+          {post.data.tags.map(tag => (
+            <span class="sidebar-tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Related Studies Section -->
+  {relatedPosts.length > 0 && (
+    <section class="related-section-wrap" aria-labelledby="related-studies-title">
+      <div class="container">
+        <h3 id="related-studies-title" class="related-h3-title">Related Studies</h3>
+        <div class="related-grid-layout">
+          {relatedPosts.map(relPost => (
+            <article class="related-card-el">
+              <img src={relPost.data.heroImage} alt={relPost.data.heroAlt} />
+              <div class="related-card-body">
+                <span class="rel-cat">{relPost.data.category}</span>
+                <h4><a href={`/blog/${relPost.id}/`}>{relPost.data.title}</a></h4>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>
+
+<style>
+  /* Cinematic Header styles */
+  .post-cinematic-header {
+    position: relative;
+    height: 480px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  @media (max-width: 768px) {
+    .post-cinematic-header {
+      height: 380px;
+    }
+  }
+  .post-header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .post-header-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .post-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(36,34,32,0.1) 0%, rgba(36,34,32,0.85) 100%);
+    z-index: 2;
+  }
+  .post-header-container {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    color: #f5efe7;
+  }
+  
+  .post-breadcrumbs {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+  .post-breadcrumbs a {
+    color: #f5efe7;
+  }
+  .post-breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+  
+  .post-detail-title {
+    font-size: 2.75rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+  @media (max-width: 768px) {
+    .post-detail-title {
+      font-size: 2rem;
+    }
+  }
+  
+  .post-detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.95;
+  }
+  .post-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .post-meta-avatar {
+    width: 28px;
+    height: 28px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* Table of Contents */
+  .article-toc {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .article-toc h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-serif);
+  }
+  .article-toc ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .article-toc li {
+    margin-bottom: 0.4rem;
+  }
+  .toc-depth-3 {
+    padding-left: 1rem;
+  }
+  .article-toc a {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+  .article-toc a:hover {
+    color: var(--color-accent);
+  }
+  
+  /* Reading progress bar animation */
+  .post-reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background-color: var(--color-accent);
+    width: 0%;
+    z-index: 1001;
+    transition: width 0.1s ease-out;
+  }
+
+  /* Toc widget sidebar hover styles */
+  .toc-sidebar-link:hover {
+    color: var(--color-accent) !important;
+  }
+
+  /* Share buttons */
+  .share-box {
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+    margin-top: 3rem;
+  }
+  .share-box h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  .share-buttons {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .share-btn {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff !important;
+  }
+  .pin-share {
+    background-color: #bd081c;
+  }
+  .twitter-share {
+    background-color: #1da1f2;
+  }
+
+  /* Prev/Next post links */
+  .post-navigation-links {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 2rem 0;
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 600px) {
+    .post-navigation-links {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  .nav-prev {
+    text-align: left;
+  }
+  .nav-next {
+    text-align: right;
+  }
+  .nav-direction {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+  }
+  .nav-post-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--color-text);
+    font-weight: 700;
+  }
+  .nav-prev a:hover .nav-post-title, .nav-next a:hover .nav-post-title {
+    color: var(--color-accent);
+  }
+
+  /* Comments section styles */
+  .comments-section {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2.5rem;
+    margin-top: 3rem;
+  }
+  .comments-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-serif);
+  }
+
+  /* Related section */
+  .related-section-wrap {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding: 5rem 0;
+    margin-top: 5rem;
+  }
+  .related-h3-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .related-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  @media (max-width: 500px) {
+    .related-grid-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+  .related-card-el {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+  }
+  .related-card-el:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .related-card-el img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .related-card-body {
+    padding: 1.25rem;
+  }
+  .rel-cat {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .related-card-body h4 {
+    font-size: 1.15rem;
+    font-family: var(--font-serif);
+  }
+  .related-card-body h4 a:hover {
+    color: var(--color-accent);
+  }
+</style>
+
+<script>
+  // Client-side scroll depth indicator and comment validations
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Reading progress indicator
+    const progressEl = document.getElementById("reading-progress");
+    if (progressEl) {
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0) {
+          const scrollPct = (scrollTop / docHeight) * 100;
+          progressEl.style.width = scrollPct + "%";
+        }
+      });
+    }
+
+    // 2. Comments validation
+    const form = document.getElementById("article-comment-form") as HTMLFormElement;
+    const nameInput = document.getElementById("comment-name") as HTMLInputElement;
+    const textInput = document.getElementById("comment-text") as HTMLTextAreaElement;
+    const successPanel = document.getElementById("comment-success") as HTMLDivElement;
+    const errorPanel = document.getElementById("comment-error") as HTMLDivElement;
+    const errorText = document.getElementById("comment-error-text") as HTMLSpanElement;
+
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        successPanel.style.display = "none";
+        errorPanel.style.display = "none";
+
+        let errors = [];
+
+        if (!nameInput.value.trim()) {
+          errors.push("Name is required.");
+          nameInput.style.borderColor = "var(--color-accent)";
+        } else {
+          nameInput.style.borderColor = "var(--color-border)";
+        }
+
+        if (!textInput.value.trim()) {
+          errors.push("Comment text is required.");
+          textInput.style.borderColor = "var(--color-accent)";
+        } else {
+          textInput.style.borderColor = "var(--color-border)";
+        }
+
+        if (errors.length > 0) {
+          errorText.textContent = errors[0];
+          errorPanel.style.display = "flex";
+          return;
+        }
+
+        // Passed validation: show success panel
+        successPanel.style.display = "flex";
+        form.reset();
+      });
+    }
+  });
+</script>

@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout title="My Story" description="Learn about the author behind InterestArt—a software engineering student exploring the connection between code precision and fine art expression.">
+  <div class="about-header">
+    <div class="container text-center">
+      <h1>The Mind Behind the Studio</h1>
+      <p class="about-tagline">{siteConfig.author.name} &middot; Creator of InterestArt</p>
+    </div>
+  </div>
+
+  <div class="container about-container">
+    <div class="about-grid">
+      <!-- Image Column -->
+      <div class="about-image-side">
+        <!-- Tasteful local placeholder block -->
+        <div class="profile-image-placeholder">
+          <span>{siteConfig.author.avatarInitials}</span>
+        </div>
+        <p class="image-note">
+          Editable Placeholder &middot; Add your profile picture in <code>public/images/profile.jpg</code>
+        </p>
+      </div>
+
+      <!-- Content Column -->
+      <div class="about-text-side">
+        <h2>Why InterestArt?</h2>
+        <p class="about-highlight">
+          {siteConfig.author.description}
+        </p>
+        <p>
+          In a world governed by deterministic logic, clean functions, and strict borders, coding offers a beautiful cerebral playground. However, spending hours behind a glowing monitor can leave one craving something tactile, physical, and expressive.
+        </p>
+        <p>
+          I started InterestArt as a digital notebook to document my balance. Stripping away the pressure of perfection, I began working with messy charcoal sticks, clay pinch bowls, and cold-press watercolor pads. Here, I explore techniques, write about masters, and share low-pressure lessons to encourage others to step away from screens and create.
+        </p>
+
+        <div class="philosophy-box">
+          <h3>My Creative Philosophy</h3>
+          <ul>
+            <li><strong>Wabi-Sabi:</strong> Celebrate minor wobbles, coarse paper grains, and asymmetric contours. The charm of art is in the maker's hand.</li>
+            <li><strong>Mindful Routines:</strong> Focus on the process of drawing rather than the finished product. Five minutes of doodling is a win.</li>
+            <li><strong>Code and Pigment:</strong> Structure helps expression. The rules of perspective and value ranges are just as beautiful as clean functions.</li>
+          </ul>
+        </div>
+
+        <div class="milestones-placeholder">
+          <h3>Editable Timeline Placeholder</h3>
+          <p class="placeholder-warning-note">
+            Note: This timeline is for demonstration purposes. Feel free to replace these milestones with your actual artistic journey.
+          </p>
+          <div class="milestone-item">
+            <div class="milestone-year">2024</div>
+            <div class="milestone-details">
+              <h4>First Watercolor Wash</h4>
+              <p>Began studying classic wash methods in the backyard after writing college Java programs.</p>
+            </div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-year">2025</div>
+            <div class="milestone-details">
+              <h4>Tactile Clay Explorations</h4>
+              <p>Acquired low-fire clay and began pinch pot handbuilding without a pottery wheel.</p>
+            </div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-year">2026</div>
+            <div class="milestone-details">
+              <h4>Launching InterestArt</h4>
+              <p>Built this Astro platform to gather tutorials, art history breakdowns, and studio prompts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .about-header {
+    padding: 5rem 0 3rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .about-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .about-tagline {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+
+  .about-container {
+    padding: 5rem 1.5rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 4rem;
+  }
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .about-image-side {
+    text-align: center;
+  }
+  
+  .profile-image-placeholder {
+    width: 100%;
+    height: 350px;
+    background-color: var(--color-surface-soft);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+  }
+  .image-note {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  .about-text-side h2 {
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-highlight {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--color-accent);
+    margin-bottom: 2rem;
+  }
+
+  .about-text-side p {
+    font-size: 1.05rem;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .philosophy-box {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    margin: 3rem 0;
+  }
+  .philosophy-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .philosophy-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .philosophy-box li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Milestones timeline */
+  .milestones-placeholder {
+    border-top: 1px solid var(--color-border);
+    padding-top: 3rem;
+    margin-top: 3rem;
+  }
+  .milestones-placeholder h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .placeholder-warning-note {
+    font-size: 0.85rem !important;
+    color: var(--color-text-muted) !important;
+    font-style: italic;
+    margin-bottom: 2rem !important;
+  }
+  .milestone-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .milestone-year {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+  .milestone-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+  .milestone-details p {
+    font-size: 0.95rem !important;
+    color: var(--color-text-muted) !important;
+    line-height: 1.5;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+</style>

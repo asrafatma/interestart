@@ -1,0 +1,134 @@
+---
+import { siteConfig } from '../data/siteConfig';
+
+const { activeHref = "" } = Astro.props;
+---
+
+<header>
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="/" class="logo" aria-label="InterestArt Home">
+      {siteConfig.siteName}<span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    
+    <!-- Desktop Nav -->
+    <nav aria-label="Main Navigation">
+      <ul class="nav-menu">
+        {siteConfig.navigation.map((item) => (
+          <li>
+            <a 
+              href={item.href} 
+              class={`nav-link ${activeHref === item.href ? 'active' : ''}`}
+              aria-current={activeHref === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="nav-actions">
+      <!-- Theme Toggle -->
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme" title="Toggle theme">
+        <!-- Moon Icon (shows in light mode) -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <!-- Sun Icon (shows in dark mode) -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+
+      <!-- Subscribe CTA button -->
+      <a href="/contact/" class="cta-btn" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Subscribe</a>
+
+      <!-- Hamburger mobile button -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle Mobile Menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation Drawer">
+    <nav aria-label="Mobile Navigation">
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.5rem;">
+        {siteConfig.navigation.map((item) => (
+          <li>
+            <a 
+              href={item.href} 
+              class={`mobile-nav-link ${activeHref === item.href ? 'active' : ''}`}
+              aria-current={activeHref === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Dynamic client-side scripts for Header menu and Theme
+  const themeToggle = document.getElementById("theme-toggle");
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const mobileDrawer = document.getElementById("mobile-drawer");
+  const mobileOverlay = document.getElementById("mobile-overlay");
+
+  // Theme Toggle logic
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", nextTheme);
+      localStorage.setItem("theme", nextTheme);
+    });
+  }
+
+  // Mobile Drawer toggle logic
+  if (hamburgerBtn && mobileDrawer && mobileOverlay) {
+    const toggleMenu = () => {
+      const isActive = mobileDrawer.classList.toggle("active");
+      mobileOverlay.classList.toggle("active");
+      hamburgerBtn.setAttribute("aria-expanded", isActive ? "true" : "false");
+      
+      const spans = hamburgerBtn.querySelectorAll("span");
+      if (isActive) {
+        spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+        spans[1].style.opacity = "0";
+        spans[2].style.transform = "rotate(-45deg) translate(5px, -5px)";
+        // Trap focus to drawer later if required, or simple esc listener
+      } else {
+        spans[0].style.transform = "none";
+        spans[1].style.opacity = "1";
+        spans[2].style.transform = "none";
+      }
+    };
+
+    hamburgerBtn.addEventListener("click", toggleMenu);
+    mobileOverlay.addEventListener("click", toggleMenu);
+
+    // Escape key closes mobile menu
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mobileDrawer.classList.contains("active")) {
+        toggleMenu();
+        hamburgerBtn.focus();
+      }
+    });
+  }
+</script>

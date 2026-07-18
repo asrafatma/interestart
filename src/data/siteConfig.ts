@@ -1,0 +1,37 @@
+export const siteConfig = {
+  siteName: "InterestArt",
+  tagline: "Art inspiration, creative techniques, and beautiful ideas for every artist.",
+  description: "A design-forward art blog by a software engineering student exploring fine art, sketching, digital illustration, and crafts.",
+  siteUrl: "https://interestart.example", // Replace with your production domain (e.g. https://interestart.com)
+  contactEmail: "hello@interestart.example", // Replace with your contact email
+  defaultSocialImage: "/images/hero_artwork.jpg",
+  author: {
+    name: "Alex Rivers",
+    avatarInitials: "AR",
+    description: "A software engineering student exploring the connection between the precision of code and the expression of art."
+  },
+  social: {
+    pinterest: "https://pinterest.com/interestart_placeholder", // Replace with your Pinterest profile
+    instagram: "https://instagram.com/interestart_placeholder", // Replace with your Instagram profile
+    github: "https://github.com/interestart_placeholder" // Replace with your GitHub profile
+  },
+  navigation: [
+    { label: "Feed", href: "/" },
+    { label: "Categories", href: "/categories/" },
+    { label: "About", href: "/about/" },
+    { label: "Contact", href: "/contact/" }
+  ],
+  footerLinks: {
+    explore: [
+      { label: "Art Feed", href: "/" },
+      { label: "Categories", href: "/categories/" },
+      { label: "About My Story", href: "/about/" },
+      { label: "Work With Me", href: "/contact/" }
+    ],
+    legal: [
+      { label: "Privacy Policy", href: "/privacy-policy/" },
+      { label: "Terms of Use", href: "/terms/" },
+      { label: "Editorial Policy", href: "/editorial-policy/" }
+    ]
+  }
+};

@@ -1,0 +1,295 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/BlogCard.astro';
+
+// Fetch and filter published posts
+const allPosts = await getCollection('blog', ({ data }) => {
+  if (data.draft) return false;
+  const postDate = new Date(data.date);
+  const buildDate = new Date();
+  return postDate <= buildDate;
+});
+
+// Sort by date descending
+const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Get unique categories and calculate counts
+const categories = ["All", ...new Set(posts.map(p => p.data.category))];
+const categoryCounts = categories.map(cat => {
+  const count = cat === "All" 
+    ? posts.length 
+    : posts.filter(p => p.data.category === cat).length;
+  return { name: cat, count };
+});
+---
+
+<Layout title="Art Blog Feed" description="Browse all art tutorials, creative guides, sketching tips, and art history insights from the InterestArt studio.">
+  <div class="blog-feed-header">
+    <div class="container text-center">
+      <h1>Studio Art Feed</h1>
+      <p class="feed-sub">A curated library of sketching guides, oil painting techniques, and art history breakdowns.</p>
+    </div>
+  </div>
+
+  <div class="container feed-wrapper">
+    <!-- Filters & Search Bar -->
+    <div class="feed-controls">
+      <!-- Search Input -->
+      <div class="search-bar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 18px; height: 18px; color: var(--color-text-muted);">
+          <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Search topics, mediums, or tags..." 
+          aria-label="Search articles" 
+        />
+        <button id="search-reset" class="search-reset-btn" aria-label="Clear search query" style="display:none;">&times;</button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="filters-container" id="filter-pills" role="tablist" aria-label="Filter blog posts by category">
+        {categoryCounts.map((cat, idx) => (
+          <button 
+            class={`filter-pill ${idx === 0 ? 'active' : ''}`} 
+            data-category={cat.name}
+            role="tab"
+            aria-selected={idx === 0 ? 'true' : 'false'}
+          >
+            {cat.name} <span class="filter-count">({cat.count})</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Empty State Message -->
+    <div id="empty-state" class="empty-state-container" role="alert" style="display:none;">
+      <p class="empty-title">No studies found matching your query</p>
+      <p class="empty-desc">Try checking your spelling, looking for another keyword, or selecting a different category pill.</p>
+      <button id="empty-reset-btn" class="btn-secondary" style="margin-top: 1rem;">Reset Filters</button>
+    </div>
+
+    <!-- Pinterest Masonry Grid (Server-rendered, Client-filtered) -->
+    <div class="masonry-grid" id="posts-grid">
+      {posts.map(post => (
+        <BlogCard post={post} />
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .blog-feed-header {
+    padding: 5rem 0 3rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .blog-feed-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .feed-sub {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .feed-wrapper {
+    padding: 3rem 1.5rem;
+  }
+  
+  .feed-controls {
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Search bar */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+    padding: 0.75rem 1.25rem;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: var(--transition-fast);
+  }
+  .search-bar:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+  }
+  .search-bar input {
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    padding-left: 0.75rem;
+    width: 100%;
+  }
+  .search-bar input:focus {
+    outline: none;
+  }
+  .search-reset-btn {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    padding: 0 0.25rem;
+    position: absolute;
+    right: 15px;
+  }
+  .search-reset-btn:hover {
+    color: var(--color-text);
+  }
+
+  .filters-container {
+    justify-content: center;
+  }
+
+  .empty-state-container {
+    text-align: center;
+    padding: 6rem 1.5rem;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    margin: 2rem 0;
+  }
+  .empty-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .empty-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+</style>
+
+<script>
+  // High-performance client-side filtering script (keeps HTML clean and SEO indexable)
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input") as HTMLInputElement;
+    const searchReset = document.getElementById("search-reset") as HTMLButtonElement;
+    const filterPills = document.querySelectorAll(".filter-pill");
+    const posts = document.querySelectorAll(".masonry-item");
+    const emptyState = document.getElementById("empty-state") as HTMLDivElement;
+    const emptyResetBtn = document.getElementById("empty-reset-btn") as HTMLButtonElement;
+
+    let activeCategory = "All";
+    let searchQuery = "";
+
+    const filterPosts = () => {
+      let visibleCount = 0;
+
+      posts.forEach(post => {
+        const postEl = post as HTMLElement;
+        const cat = postEl.dataset.category || "";
+        const title = postEl.dataset.title || "";
+        const excerpt = postEl.dataset.excerpt || "";
+
+        const matchesCat = activeCategory === "All" || cat === activeCategory;
+        const matchesSearch = !searchQuery || title.includes(searchQuery) || excerpt.includes(searchQuery);
+
+        if (matchesCat && matchesSearch) {
+          postEl.style.display = "inline-block";
+          visibleCount++;
+        } else {
+          postEl.style.display = "none";
+        }
+      });
+
+      // Toggle empty state
+      if (visibleCount === 0) {
+        emptyState.style.display = "block";
+        document.getElementById("posts-grid")!.style.display = "none";
+      } else {
+        emptyState.style.display = "none";
+        document.getElementById("posts-grid")!.style.display = "block";
+      }
+    };
+
+    // Category pills event handler
+    filterPills.forEach(pill => {
+      pill.addEventListener("click", () => {
+        filterPills.forEach(p => {
+          p.classList.remove("active");
+          p.setAttribute("aria-selected", "false");
+        });
+        pill.classList.add("active");
+        pill.setAttribute("aria-selected", "true");
+
+        activeCategory = (pill as HTMLElement).dataset.category || "All";
+        filterPosts();
+      });
+    });
+
+    // Search input event handler
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = (e.target as HTMLInputElement).value.toLowerCase().trim();
+        
+        // Show/hide reset button
+        if (searchQuery) {
+          searchReset.style.display = "block";
+        } else {
+          searchReset.style.display = "none";
+        }
+
+        filterPosts();
+      });
+    }
+
+    // Reset search query
+    if (searchReset) {
+      searchReset.addEventListener("click", () => {
+        searchInput.value = "";
+        searchQuery = "";
+        searchReset.style.display = "none";
+        filterPosts();
+        searchInput.focus();
+      });
+    }
+
+    // Reset all filters button inside empty state
+    if (emptyResetBtn) {
+      emptyResetBtn.addEventListener("click", () => {
+        // Reset search
+        searchInput.value = "";
+        searchQuery = "";
+        searchReset.style.display = "none";
+
+        // Reset category pill
+        filterPills.forEach((p, idx) => {
+          if (idx === 0) {
+            p.classList.add("active");
+            p.setAttribute("aria-selected", "true");
+            activeCategory = (p as HTMLElement).dataset.category || "All";
+          } else {
+            p.classList.remove("active");
+            p.setAttribute("aria-selected", "false");
+          }
+        });
+
+        filterPosts();
+      });
+    }
+  });
+</script>

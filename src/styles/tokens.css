@@ -1,0 +1,82 @@
+/* InterestArt Design System Tokens */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+  /* Colors - Default Light Mode (Soft and Elegant) */
+  --color-background: #fdfbf7;
+  --color-surface: #fffaf6;
+  --color-surface-soft: #f7e9e3;
+  --color-blush: #e8c7c0;
+  --color-blush-hover: #dfb3aa;
+  --color-sage: #b8c3b0;
+  --color-lavender: #c9c1d8;
+  --color-powder-blue: #c4d5df;
+  --color-peach: #e8c6ad;
+  
+  --color-text: #1d1c1a;
+  --color-text-muted: #625f5a;
+  --color-border: #ded8d1;
+  --color-accent: #8b5f5a;
+  --color-charcoal: #171717;
+  --color-charcoal-hover: #2d2d2d;
+
+  /* Pastel colors mapped to categories */
+  --pastel-painting: var(--color-surface-soft);
+  --pastel-drawing: var(--color-blush);
+  --pastel-digital: var(--color-powder-blue);
+  --pastel-history: var(--color-lavender);
+  --pastel-crafts: var(--color-peach);
+  --pastel-sculpture: var(--color-sage);
+  --pastel-pastel: #faebdd;
+  --pastel-charcoal: #e3dec9;
+
+  /* Typography */
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", Helvetica, Arial, sans-serif;
+  
+  /* Layout & Spacing */
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 8px;
+  --radius-circle: 50%;
+  
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 30px rgba(78, 62, 53, 0.05);
+  --shadow-lg: 0 20px 40px rgba(78, 62, 53, 0.1);
+
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* Dark Mode - Charcoal Drama Theme */
+[data-theme="dark"] {
+  --color-background: #121212;
+  --color-surface: #1b1b1b;
+  --color-surface-soft: #242424;
+  --color-text: #f5efe7;
+  --color-text-muted: #c4bdb5;
+  --color-border: #383838;
+  --color-accent: #dfb3aa;
+  
+  --color-blush: #2d231e;
+  --color-blush-hover: #3d302a;
+  --color-sage: #21281d;
+  --color-lavender: #262130;
+  --color-powder-blue: #1d252a;
+  --color-peach: #342821;
+  --color-charcoal: #f5efe7;
+  --color-charcoal-hover: #e6dfd7;
+
+  --pastel-painting: #1e1b19;
+  --pastel-drawing: #2a221f;
+  --pastel-digital: #1b2124;
+  --pastel-history: #231f2b;
+  --pastel-crafts: #2d231e;
+  --pastel-sculpture: #1d221a;
+  --pastel-pastel: #2c2520;
+  --pastel-charcoal: #252320;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.6);
+}

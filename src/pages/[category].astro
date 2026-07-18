@@ -1,0 +1,184 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+// getStaticPaths generates routes at /painting/, /drawing/, etc.
+export async function getStaticPaths() {
+  const categories = [
+    {
+      name: "Fine Art and Painting",
+      slug: "painting",
+      description: "Delve into watercolor guides, oil brushwork methods, and color theory basics to bring canvas works to life.",
+      intro: "Classic oil, acrylic, and watercolor tutorials. Here we focus on the fluid flow of color, pigment characteristics, brushwork control, and traditional techniques. Study at your own pace."
+    },
+    {
+      name: "Sketching and Drawing",
+      slug: "drawing",
+      description: "Master basic anatomical structures, proportional guidelines, and pencil values for realistic pencil sketches.",
+      intro: "Graphite proportion, perspective, and outline guides. Shading is a science of light. Discover how to train your eye, map out proportions accurately, and capture life on flat paper."
+    },
+    {
+      name: "Digital Illustration",
+      slug: "digital-art",
+      description: "Learn layers setup, vector drawing precision, and custom texture applications to elevate digital graphics.",
+      intro: "Layers, vectors, and brushes configuration guides. Digital tools offer infinite flexibility, but we hold fast to traditional rules of gesture, light, and anatomical texture."
+    },
+    {
+      name: "Art History Insights",
+      slug: "art-history",
+      description: "Explore classic artistic movements, Caravaggio chiaroscuro lessons, and critiques on historical masters.",
+      intro: "Historical movements, masters, and theories explained. Understanding the historical context behind masterpieces is the key to expanding your own creative visual vocabulary."
+    },
+    {
+      name: "DIY and Crafts",
+      slug: "diy-crafts",
+      description: "Elevate journals and sketchbooks with flower pressing processes, calligraphy styles, and paper crafts.",
+      intro: "Simple paper DIY projects, pressed flower tips, and layout styling advice for journals, flatlays, and sketchbook collages."
+    },
+    {
+      name: "Sculpture and Pottery",
+      slug: "sculpture-pottery",
+      description: "Discover ceramic handbuilding processes: making clay mugs, pinch pots, and slab vase structures at home.",
+      intro: "Learn how to build beautiful clay mugs, bowls, and vases at home using accessible handbuilding techniques. Meditative clay shaping without the complex wheel setup."
+    },
+    {
+      name: "Aesthetic Pastel Art",
+      slug: "pastel-art",
+      description: "Work with warm, chalky pastel dust. Sketch cozy room settings using blush tones, creams, and sages.",
+      intro: "A beginner-friendly guide to choosing pastel palettes, blending with highlights, and sketching warm daily interior corners."
+    },
+    {
+      name: "Charcoal Art",
+      slug: "charcoal-art",
+      description: "Embrace dramatic contrast. Practice compressed shading values, vine shadows, and chiaroscuro textures.",
+      intro: "Learn how to use vine and compressed charcoal, blend deep values, and create dramatic chiaroscuro contrasts."
+    }
+  ];
+
+  return categories.map(cat => ({
+    params: { category: cat.slug },
+    props: { categoryData: cat }
+  }));
+}
+
+const { categoryData } = Astro.props;
+
+// Fetch and filter published posts for this category
+const allPosts = await getCollection('blog', ({ data }) => {
+  if (data.draft) return false;
+  if (data.category !== categoryData.name) return false;
+  const postDate = new Date(data.date);
+  const buildDate = new Date();
+  return postDate <= buildDate;
+});
+
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const categoryTitle = `${categoryData.name} Guides`;
+const seoDescription = `Browse all articles, guides, and tutorials under ${categoryData.name}. ${categoryData.description}`;
+---
+
+<Layout title={categoryTitle} description={seoDescription}>
+  <div class="category-hub-header">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <nav class="hub-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/categories/">Categories</a>
+        <span aria-hidden="true">/</span>
+        <span class="active-crumb">{categoryData.name}</span>
+      </nav>
+      
+      <h1>{categoryData.name}</h1>
+      <p class="hub-intro-text">{categoryData.intro}</p>
+    </div>
+  </div>
+
+  <div class="container hub-main">
+    {sortedPosts.length === 0 ? (
+      <div class="coming-soon-box">
+        <h3>Studies Coming Soon</h3>
+        <p>I am currently drafting guides for the {categoryData.name} category. In the meantime, you can explore other categories or check back next week!</p>
+        <a href="/categories/" class="btn-secondary" style="margin-top: 1rem;">View All Categories</a>
+      </div>
+    ) : (
+      <div class="hub-content-layout">
+        <!-- Main Post Grid -->
+        <div class="masonry-grid">
+          {sortedPosts.map(post => (
+            <BlogCard post={post} />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+
+  <!-- Soft Newsletter box -->
+  <Newsletter />
+</Layout>
+
+<style>
+  .category-hub-header {
+    padding: 5rem 0 3rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .hub-breadcrumbs {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .hub-breadcrumbs a:hover {
+    color: var(--color-accent);
+  }
+  .active-crumb {
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  .category-hub-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hub-intro-text {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 750px;
+    line-height: 1.7;
+  }
+
+  .hub-main {
+    padding: 4rem 1.5rem;
+  }
+
+  .coming-soon-box {
+    text-align: center;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    padding: 4rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .coming-soon-box h3 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .coming-soon-box p {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+</style>

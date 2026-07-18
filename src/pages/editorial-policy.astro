@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout title="Editorial Policy" description="Review the editorial guidelines, correction policies, and content standards for the InterestArt art blog.">
+  <div class="legal-header">
+    <div class="container">
+      <h1>Editorial Policy</h1>
+      <p class="last-updated">Last Updated: July 18, 2026</p>
+    </div>
+  </div>
+
+  <div class="container legal-content">
+    <div class="legal-body">
+      <p class="intro">
+        InterestArt is dedicated to providing high-quality, inspiring, and technically accurate content for sketching, painting, ceramics, and art history enthusiasts. This policy outlines our standards for content creation, attribution, corrections, and AI usage.
+      </p>
+
+      <h2>1. Content Standards and Originality</h2>
+      <p>
+        All articles and tutorials published on InterestArt are created for educational and creative purposes. We aim to outline practical steps, explain techniques accurately, and source art history references from reputable archives. We do not copy content from other websites or publish fabricated experience or credentials.
+      </p>
+
+      <h2>2. Sourcing and Image Rights</h2>
+      <p>
+        Attribution is fundamental. When discussing historical art pieces, we reference the artists, date of creation, and archives where available. For all visual assets:
+      </p>
+      <ul>
+        <li>We prioritize original sketches, paintings, and pottery works photographed in our studio.</li>
+        <li>Public domain historical artwork is labeled with standard attributions.</li>
+        <li>Stock images are selected only from verified license holders with appropriate artist credits when applicable.</li>
+      </ul>
+
+      <h2>3. Corrections Policy</h2>
+      <p>
+        We strive for accuracy, but mistakes can happen. If you notice a typo, an incorrect historical date, a broken link, or a step in a tutorial that needs clarification, please contact us at <code>{siteConfig.contactEmail}</code>. We review all feedback and make necessary updates promptly. Updated posts will clearly display an <code>updatedDate</code> in the page meta when meaningful revisions occur.
+      </p>
+
+      <div class="placeholder-alert">
+        <strong>[Editable Configuration Required] AI Disclosure Policy:</strong><br />
+        If you use generative models or AI tools (like Midjourney, ChatGPT, or Gemini) to write outlines, generate background colors, or refine images, update this section to explain:
+        <ul>
+          <li>Whether text or images contain AI-assisted content.</li>
+          <li>How you edit and verify AI outputs to ensure accuracy.</li>
+          <li>A clear statement of transparency for your readers.</li>
+        </ul>
+      </div>
+
+      <h2>4. Monetization and Transparency</h2>
+      <p>
+        Future monetization methods, such as display ads and affiliate links, will always be clearly separated from editorial content. Under no circumstances will we recommend materials, clay tools, or paint brands unless we believe they are genuinely high-quality and useful for our readers.
+      </p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .legal-header {
+    padding: 5rem 0 3rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .legal-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .last-updated {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+  
+  .legal-content {
+    padding: 4rem 1.5rem;
+  }
+  
+  .legal-body {
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+  .legal-body p {
+    margin-bottom: 1.5rem;
+  }
+  .legal-body h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .legal-body ul {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+  .legal-body li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .placeholder-alert {
+    background-color: var(--color-surface-soft);
+    border-left: 4px solid var(--color-accent);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+</style>

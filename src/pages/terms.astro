@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout title="Terms of Use" description="Review the terms of use agreement for InterestArt. Learn about copyright, disclaimers, and user submissions.">
+  <div class="legal-header">
+    <div class="container">
+      <h1>Terms of Use</h1>
+      <p class="last-updated">Last Updated: July 18, 2026</p>
+    </div>
+  </div>
+
+  <div class="container legal-content">
+    <div class="legal-body">
+      <p class="intro">
+        Welcome to InterestArt! These terms of use outline the rules and regulations for the use of InterestArt's Website, located at <code>{siteConfig.siteUrl}</code>.
+      </p>
+      
+      <p>
+        By accessing this website, we assume you accept these terms of use. Do not continue to use InterestArt if you do not agree to take all of the terms of use stated on this page.
+      </p>
+
+      <h2>1. Intellectual Property Rights</h2>
+      <p>
+        Unless otherwise stated, InterestArt and/or its licensors own the intellectual property rights for all material on InterestArt. All intellectual property rights are reserved. You may access this from InterestArt for your own personal use subjected to restrictions set in these terms.
+      </p>
+      <p>You must not:</p>
+      <ul>
+        <li>Republish material from InterestArt.</li>
+        <li>Sell, rent, or sub-license material from InterestArt.</li>
+        <li>Reproduce, duplicate, or copy material from InterestArt.</li>
+        <li>Redistribute content from InterestArt.</li>
+      </ul>
+
+      <h2>2. User Comments and Feedback</h2>
+      <p>
+        Parts of this website offer an opportunity for users to post comments and exchange opinions in certain areas of the website. InterestArt does not filter, edit, publish, or review comments prior to their presence on the website. Comments do not reflect the views and opinions of InterestArt, its agents, and/or affiliates. Comments reflect the views and opinions of the person who posts their views and opinions.
+      </p>
+      <p>
+        InterestArt reserves the right to monitor all comments and to remove any comments which can be considered inappropriate, offensive, or causes breach of these Terms of Use.
+      </p>
+
+      <h2>3. Hyperlinking to our Content</h2>
+      <p>
+        The following organizations may link to our Website without prior written approval:
+      </p>
+      <ul>
+        <li>Government agencies;</li>
+        <li>Search engines;</li>
+        <li>News organizations;</li>
+        <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses.</li>
+      </ul>
+
+      <h2>4. Content Liability</h2>
+      <p>
+        We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that are rising on your Website. No link(s) should appear on any Website that may be interpreted as libeous, obscene, or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.
+      </p>
+
+      <h2>5. Disclaimer of Warranties</h2>
+      <p>
+        This website is provided "as is," with all faults, and InterestArt expresses no representations or warranties of any kind related to this website or the materials contained on this website. Also, nothing contained on this website shall be interpreted as advising you.
+      </p>
+      
+      <div class="placeholder-alert">
+        <strong>[Editable Configuration Required] Disclaimers:</strong><br />
+        If you monetize with affiliate marketing (e.g. Amazon Associates) or display advertisements later, update this page to include:
+        <ul>
+          <li>An explicit affiliate disclosure (e.g. "We earn commission from qualifying purchases").</li>
+          <li>Disclaimer that tutorials are for educational inspiration and individuals assume risks for handling sharp cutting tools, hot ovens, or raw pottery clay.</li>
+        </ul>
+      </div>
+
+      <h2>6. Governing Law</h2>
+      <p>
+        These Terms will be governed by and interpreted in accordance with the laws of the jurisdiction where the website owner resides, and you submit to the non-exclusive jurisdiction of the state and federal courts located in that region for the resolution of any disputes.
+      </p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .legal-header {
+    padding: 5rem 0 3rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .legal-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .last-updated {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+  
+  .legal-content {
+    padding: 4rem 1.5rem;
+  }
+  
+  .legal-body {
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+  .legal-body p {
+    margin-bottom: 1.5rem;
+  }
+  .legal-body h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .legal-body ul {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+  .legal-body li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .placeholder-alert {
+    background-color: var(--color-surface-soft);
+    border-left: 4px solid var(--color-accent);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+</style>

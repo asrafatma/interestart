@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout title="Privacy Policy" description="Review the privacy policy for InterestArt. Learn how we handle forms, cookies, emails, and third-party tools.">
+  <div class="legal-header">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last Updated: July 18, 2026</p>
+    </div>
+  </div>
+
+  <div class="container legal-content">
+    <div class="legal-body">
+      <p class="intro">
+        At InterestArt, accessible from <code>{siteConfig.siteUrl}</code>, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by InterestArt and how we use it.
+      </p>
+
+      <h2>1. General Information Collection</h2>
+      <p>
+        If you contact us directly, we may receive additional information about you such as your name, email address, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.
+      </p>
+
+      <h2>2. Log Files</h2>
+      <p>
+        InterestArt follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.
+      </p>
+
+      <h2>3. Cookies and Web Beacons</h2>
+      <p>
+        Like any other website, InterestArt uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.
+      </p>
+      
+      <div class="placeholder-alert">
+        <strong>[Editable Configuration Required] Analytics & Advertising:</strong><br />
+        This site is designed to support future third-party integrations (e.g., Google Analytics, Google AdSense, Pinterest Pixel). Once configured, you must document:
+        <ul>
+          <li>Details of the analytics software used.</li>
+          <li>Ad networks that place cookies to serve personalized ads.</li>
+          <li>Opt-out links (like Network Advertising Initiative).</li>
+        </ul>
+      </div>
+
+      <h2>4. Third Party Privacy Policies</h2>
+      <p>
+        InterestArt's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
+      </p>
+
+      <h2>5. Newsletter and Form Data</h2>
+      <p>
+        If you subscribe to our newsletter or submit a contact form, we collect your name and email address.
+      </p>
+      <div class="placeholder-alert">
+        <strong>[Editable Configuration Required] Email Provider Policy:</strong><br />
+        When you connect this site to an email system (e.g. MailerLite, Kit, Beehiiv), update this section to explain:
+        <ul>
+          <li>Where subscription data is stored and processed.</li>
+          <li>Compliance with CAN-SPAM and GDPR requirements.</li>
+          <li>That users can opt out instantly via the unsubscribe link.</li>
+        </ul>
+      </div>
+
+      <h2>6. GDPR Data Protection Rights</h2>
+      <p>
+        We want to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:
+      </p>
+      <ul>
+        <li><strong>The right to access</strong> – You have the right to request copies of your personal data.</li>
+        <li><strong>The right to rectification</strong> – You have the right to request that we correct any information you believe is inaccurate.</li>
+        <li><strong>The right to erasure</strong> – You have the right to request that we erase your personal data, under certain conditions.</li>
+      </ul>
+
+      <h2>7. Consent</h2>
+      <p>
+        By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+      </p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .legal-header {
+    padding: 5rem 0 3rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .legal-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .last-updated {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+  
+  .legal-content {
+    padding: 4rem 1.5rem;
+  }
+  
+  .legal-body {
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+  .legal-body p {
+    margin-bottom: 1.5rem;
+  }
+  .legal-body h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .legal-body ul {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+  .legal-body li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .placeholder-alert {
+    background-color: var(--color-surface-soft);
+    border-left: 4px solid var(--color-accent);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+</style>

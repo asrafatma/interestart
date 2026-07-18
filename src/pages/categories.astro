@@ -1,0 +1,209 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// Fetch and filter published posts
+const allPosts = await getCollection('blog', ({ data }) => {
+  if (data.draft) return false;
+  const postDate = new Date(data.date);
+  const buildDate = new Date();
+  return postDate <= buildDate;
+});
+
+// Define core editorial category hub structures
+const categoriesList = [
+  {
+    name: "Fine Art and Painting",
+    slug: "painting",
+    description: "Delve into watercolor guides, oil brushwork methods, and color theory basics to bring canvas works to life.",
+    image: "/images/fine_art.jpg",
+  },
+  {
+    name: "Sketching and Drawing",
+    slug: "drawing",
+    description: "Master basic anatomical structures, proportional guidelines, and pencil values for realistic pencil sketches.",
+    image: "/images/pastel_sketch.jpg",
+  },
+  {
+    name: "Digital Illustration",
+    slug: "digital-art",
+    description: "Learn layers setup, vector drawing precision, and custom texture applications to elevate digital graphics.",
+    image: "/images/digital_art.jpg",
+  },
+  {
+    name: "Art History Insights",
+    slug: "art-history",
+    description: "Explore classic artistic movements, Caravaggio chiaroscuro lessons, and critiques on historical masters.",
+    image: "/images/charcoal_study.jpg",
+  },
+  {
+    name: "DIY and Crafts",
+    slug: "diy-crafts",
+    description: "Elevate journals and sketchbooks with flower pressing processes, calligraphy styles, and paper crafts.",
+    image: "/images/diy_crafts.jpg",
+  },
+  {
+    name: "Sculpture and Pottery",
+    slug: "sculpture-pottery",
+    description: "Discover ceramic handbuilding processes: making clay mugs, pinch pots, and slab vase structures at home.",
+    image: "/images/sculpture.jpg",
+  },
+  {
+    name: "Aesthetic Pastel Art",
+    slug: "pastel-art",
+    description: "Work with warm, chalky pastel dust. Sketch cozy room settings using blush tones, creams, and sages.",
+    image: "/images/hero_artwork.jpg",
+  },
+  {
+    name: "Charcoal Art",
+    slug: "charcoal-art",
+    description: "Embrace dramatic contrast. Practice compressed shading values, vine shadows, and chiaroscuro textures.",
+    image: "/images/charcoal_study.jpg",
+  }
+];
+
+// Calculate counts dynamically from content collections
+const categoriesWithCounts = categoriesList.map(cat => {
+  const count = allPosts.filter(post => post.data.category === cat.name).length;
+  return { ...cat, count };
+});
+---
+
+<Layout title="Art Categories Overview" description="Dive into curated art spheres: painting, drawing, digital illustration, art history, DIY crafts, pottery, pastels, and charcoal studies.">
+  <div class="categories-header">
+    <div class="container text-center">
+      <h1>Curated Art Spheres</h1>
+      <p class="categories-sub">Select your artistic focus and explore tutorials, exercises, and essays tailored to your creative interest.</p>
+    </div>
+  </div>
+
+  <div class="container categories-main">
+    <div class="categories-grid">
+      {categoriesWithCounts.map(cat => (
+        <article class="category-card">
+          <div class="category-img-container">
+            <img src={cat.image} alt={`${cat.name} category hub thumbnail`} loading="lazy" width="400" height="250" />
+            <div class="category-count-badge">
+              {cat.count} {cat.count === 1 ? 'Study' : 'Studies'}
+            </div>
+          </div>
+          <div class="category-card-content">
+            <h2>{cat.name}</h2>
+            <p>{cat.description}</p>
+            <a href={`/${cat.slug}/`} class="category-card-link" aria-label={`Explore articles in ${cat.name}`}>
+              Explore Category &rarr;
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .categories-header {
+    padding: 5rem 0 3rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .categories-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .categories-sub {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  .categories-main {
+    padding: 4rem 1.5rem;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .category-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+  }
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent);
+  }
+
+  .category-img-container {
+    position: relative;
+    height: 200px;
+    background-color: var(--color-surface-soft);
+    overflow: hidden;
+  }
+  .category-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+  }
+  .category-card:hover .category-img-container img {
+    transform: scale(1.04);
+  }
+
+  .category-count-badge {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: var(--color-charcoal);
+    color: var(--color-background);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .category-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .category-card-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-serif);
+  }
+  .category-card-content p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+  
+  .category-card-link {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    display: inline-block;
+    align-self: flex-start;
+  }
+  .category-card-link:hover {
+    color: var(--color-text);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+</style>

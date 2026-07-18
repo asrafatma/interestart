@@ -1,0 +1,417 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { siteConfig } from '../data/siteConfig';
+
+// Fetch and filter published posts
+const allPosts = await getCollection('blog', ({ data }) => {
+  if (data.draft) return false;
+  const postDate = new Date(data.date);
+  const buildDate = new Date();
+  return postDate <= buildDate;
+});
+
+// Sort by date descending
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Get featured post and latest posts
+const featuredPost = sortedPosts.find(post => post.data.featured) || sortedPosts[0];
+const latestPosts = sortedPosts.filter(post => post.id !== (featuredPost ? featuredPost.id : '')).slice(0, 3);
+
+// Group posts by category counts for topic overview
+const categories = [
+  { name: "Fine Art and Painting", slug: "painting", count: 0, description: "Classic oil, acrylic, and watercolor tutorials." },
+  { name: "Sketching and Drawing", slug: "drawing", count: 0, description: "Graphite proportion, perspective, and outline guides." },
+  { name: "Digital Illustration", slug: "digital-art", count: 0, description: "Layers, vectors, and brushes configuration guides." },
+  { name: "Art History Insights", slug: "art-history", count: 0, description: "Historical movements, masters, and theories explained." }
+];
+
+categories.forEach(cat => {
+  cat.count = sortedPosts.filter(post => post.data.category === cat.name).length;
+});
+---
+
+<Layout>
+  <!-- Hero Section -->
+  <section class="hero-section" aria-labelledby="hero-title">
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="hero-tagline">{siteConfig.tagline}</span>
+        <h1 id="hero-title" class="hero-h1">Where Code Meets the Canvas</h1>
+        <p class="hero-description">
+          Create, learn, and find inspiration through painting, drawing, digital art, art history, and handmade creativity. Explore techniques that balance structured thinking with visual expression.
+        </p>
+        <div class="hero-actions">
+          <a href="/blog/" class="cta-btn">Explore the Blog</a>
+          <a href="/about/" class="btn-secondary">My Story</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="/images/hero_artwork.jpg" alt="Abstract gallery painting combining soft creams and charcoal textures" class="hero-img" width="600" height="450" />
+        <div class="hero-badge">
+          <span class="badge-title">Featured Theme</span>
+          <span class="badge-desc">Soft Elegance meets Charcoal Drama</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Post Section -->
+  {featuredPost && (
+    <section class="featured-section" aria-labelledby="featured-title">
+      <div class="container">
+        <h2 id="featured-title" class="section-title">Editor's Featured Study</h2>
+        <div class="featured-card">
+          <div class="featured-img-wrapper">
+            <img src={featuredPost.data.heroImage} alt={featuredPost.data.heroAlt} width="800" height="500" />
+          </div>
+          <div class="featured-content">
+            <span class="featured-category">{featuredPost.data.category}</span>
+            <h3 class="featured-h3">
+              <a href={`/blog/${featuredPost.id}/`}>{featuredPost.data.title}</a>
+            </h3>
+            <p class="featured-excerpt">{featuredPost.data.excerpt}</p>
+            <div class="featured-meta">
+              <span>By {featuredPost.data.author}</span>
+              <span aria-hidden="true">&middot;</span>
+              <span>{featuredPost.data.readTime}</span>
+              <span aria-hidden="true">&middot;</span>
+              <span>{featuredPost.data.displayDate}</span>
+            </div>
+            <a href={`/blog/${featuredPost.id}/`} class="cta-btn" style="margin-top: 1.5rem;">Read Full Study</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Explore Topics Section -->
+  <section class="topics-section" aria-labelledby="topics-title">
+    <div class="container">
+      <h2 id="topics-title" class="section-title">Explore Art Topics</h2>
+      <div class="topics-grid">
+        {categories.map(cat => (
+          <div class="topic-card">
+            <h3>{cat.name}</h3>
+            <p>{cat.description}</p>
+            <span class="topic-count">{cat.count} published articles</span>
+            <a href={`/${cat.slug}/`} class="topic-link" aria-label={`Browse articles under ${cat.name}`}>Explore Topics &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Articles Section -->
+  <section class="latest-section" aria-labelledby="latest-title">
+    <div class="container">
+      <h2 id="latest-title" class="section-title">Latest Studio Guides</h2>
+      <div class="latest-grid">
+        {latestPosts.map(post => (
+          <BlogCard post={post} />
+        ))}
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="/blog/" class="btn-secondary">View All Articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <Newsletter />
+
+  <!-- About Preview Section -->
+  <section class="about-preview-section" aria-labelledby="about-preview-title">
+    <div class="container">
+      <div class="about-preview-content">
+        <h2 id="about-preview-title">About InterestArt</h2>
+        <p>
+          InterestArt is an editorial art blog created to document creative routines, study techniques, and investigate art history. It celebrates the "slow art movement" as a peaceful counterweight to screen fatigue.
+        </p>
+        <a href="/about/" class="btn-secondary" style="margin-top: 1rem;">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta-section">
+    <div class="container text-center">
+      <h2>Ready to Start Creating?</h2>
+      <p>Pick up your sketchbook, set up your paints, and join me on this visual journey.</p>
+      <a href="/blog/" class="cta-btn" style="margin-top: 1.5rem;">Begin Exploring</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Home-specific custom styles */
+  .hero-section {
+    padding: 6rem 0 4rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+  }
+  .hero-tagline {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .hero-h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+  }
+  @media (max-width: 600px) {
+    .hero-h1 {
+      font-size: 2.5rem;
+    }
+  }
+  .hero-description {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  @media (max-width: 900px) {
+    .hero-actions {
+      justify-content: center;
+    }
+  }
+  .hero-visual {
+    position: relative;
+  }
+  .hero-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    background-color: var(--color-charcoal);
+    color: var(--color-background);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    max-width: 250px;
+  }
+  @media (max-width: 900px) {
+    .hero-badge {
+      display: none;
+    }
+  }
+  .badge-title {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    opacity: 0.7;
+  }
+  .badge-desc {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  /* Featured Post Card */
+  .featured-section {
+    padding: 5rem 0;
+  }
+  .featured-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  @media (max-width: 900px) {
+    .featured-card {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  .featured-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .featured-content {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 600px) {
+    .featured-content {
+      padding: 1.5rem;
+    }
+  }
+  .featured-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .featured-h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .featured-excerpt {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .featured-meta {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Topics section */
+  .topics-section {
+    padding: 5rem 0;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  .topic-card {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+  }
+  .topic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent);
+  }
+  .topic-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .topic-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+  .topic-count {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .topic-link {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text);
+  }
+
+  /* Latest grid */
+  .latest-section {
+    padding: 5rem 0;
+  }
+  .latest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  @media (max-width: 500px) {
+    .latest-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* About preview */
+  .about-preview-section {
+    padding: 5rem 0;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+  }
+  .about-preview-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .about-preview-content h2 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+  .about-preview-content p {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Final CTA */
+  .final-cta-section {
+    padding: 6rem 0;
+    text-align: center;
+  }
+  .final-cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .final-cta-section p {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+  }
+  .text-center {
+    text-align: center;
+  }
+</style>

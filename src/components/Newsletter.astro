@@ -1,0 +1,166 @@
+---
+/* Reusable Newsletter Signup Component */
+---
+
+<section class="newsletter-signup-box" aria-labelledby="newsletter-box-title">
+  <div class="newsletter-inner">
+    <h3 id="newsletter-box-title">Inside the Artist's Studio</h3>
+    <p class="newsletter-sub">Get one thoughtful art idea, technique, or creative prompt delivered each week.</p>
+    
+    <!-- Status Panels -->
+    <div id="newsletter-success" class="status-panel success" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span>Thank you! You have joined the InterestArt studio mail list.</span>
+    </div>
+    
+    <div id="newsletter-error" class="status-panel error" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      <span id="newsletter-error-msg">Please enter a valid email address.</span>
+    </div>
+
+    <!-- Newsletter Form -->
+    <form id="newsletter-signup-form" class="newsletter-form-el" novalidate>
+      <div class="newsletter-form-group">
+        <input 
+          type="email" 
+          id="newsletter-email" 
+          placeholder="Your email address" 
+          aria-label="Email address"
+          required 
+        />
+        <button type="submit" class="cta-btn">Join Studio</button>
+      </div>
+      <p class="newsletter-consent">
+        By subscribing, you agree to our privacy policy and consent to receive emails. You can unsubscribe at any time.
+      </p>
+    </form>
+    
+    <!-- Setup instructions for developers -->
+    <div class="dev-setup-note" style="display:none;" data-setup-info>
+      <!-- Config instructions for future providers (MailerLite, Kit, Beehiiv) -->
+      Developer Setup: To connect this form to a provider:
+      1. Add action="https://your-mailerlite-endpoint.com/sub" and method="POST"
+      2. Configure input names (e.g. name="fields[email]")
+      3. For Vercel Serverless, write a POST handler in `src/pages/api/subscribe.ts`
+    </div>
+  </div>
+</section>
+
+<style>
+  .newsletter-signup-box {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    max-width: 800px;
+    margin: 4rem auto;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .newsletter-inner {
+    text-align: center;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+  
+  .newsletter-inner h3 {
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .newsletter-sub {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+  
+  .newsletter-form-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 600px) {
+    .newsletter-form-group {
+      flex-direction: column;
+    }
+  }
+  
+  .newsletter-form-group input {
+    flex: 1;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition-fast);
+  }
+  
+  .newsletter-form-group input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+  
+  .newsletter-consent {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+  
+  .dev-setup-note {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    background-color: var(--color-surface-soft);
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    margin-top: 1rem;
+    text-align: left;
+  }
+</style>
+
+<script>
+  // Dynamic client-side validation and demonstration response
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("newsletter-signup-form") as HTMLFormElement;
+    const emailInput = document.getElementById("newsletter-email") as HTMLInputElement;
+    const successPanel = document.getElementById("newsletter-success") as HTMLDivElement;
+    const errorPanel = document.getElementById("newsletter-error") as HTMLDivElement;
+    const errorMsg = document.getElementById("newsletter-error-msg") as HTMLSpanElement;
+
+    if (form && emailInput && successPanel && errorPanel) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        // Hide previous statuses
+        successPanel.style.display = "none";
+        errorPanel.style.display = "none";
+
+        const email = emailInput.value.trim();
+
+        // Validation
+        if (!email) {
+          errorMsg.textContent = "Please enter an email address.";
+          errorPanel.style.display = "flex";
+          return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          errorMsg.textContent = "Please enter a valid email address.";
+          errorPanel.style.display = "flex";
+          return;
+        }
+
+        // Demo state action (No actual backend provider connected yet)
+        // Show success panel and clear input
+        successPanel.style.display = "flex";
+        emailInput.value = "";
+        form.style.display = "none"; // Hide form to show success
+      });
+    }
+  });
+</script>

@@ -1,0 +1,245 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout title="Connect" description="Reach out to InterestArt hello@interestart.example. Submit questions, art suggestions, or study collaboration proposals.">
+  <div class="contact-header">
+    <div class="container text-center">
+      <h1>Let's Connect</h1>
+      <p class="contact-sub">Have questions about a sketching tutorial, a feedback idea, or an art history guest piece? Fill out the form or email directly.</p>
+    </div>
+  </div>
+
+  <div class="container contact-main">
+    <div class="contact-layout-grid">
+      <!-- Contact Info Sidebar -->
+      <div class="contact-details-side">
+        <h2>Direct Contact Info</h2>
+        <p>I read every message and try to respond within a few days. Art studies and constructive criticisms are always welcome.</p>
+        
+        <ul class="contact-info-list">
+          <li>
+            <span class="info-label">Direct Email</span>
+            <span class="info-val">{siteConfig.contactEmail}</span>
+          </li>
+          <li>
+            <span class="info-label">Location</span>
+            <span class="info-val">Art Studio Desk</span>
+          </li>
+        </ul>
+
+        <h3>Find Me on Pinterest</h3>
+        <p>I post weekly palette inspiration, sketchbook loops, and classical shading references.</p>
+        <a href={siteConfig.social.pinterest} class="cta-btn" target="_blank" rel="noopener noreferrer" style="margin-top: 0.5rem;">
+          InterestArt Pinterest &rarr;
+        </a>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-side">
+        <div class="form-card">
+          <!-- Inline Status Updates -->
+          <div id="contact-success" class="status-panel success" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div>
+              <strong>Form Submitted (Demo Mode)!</strong>
+              <p style="font-size:0.85rem; margin-top:0.25rem;">Form validation passed. To receive real messages, connect this form to Formspree, Basin, or a Vercel Serverless handler as documented in <code>README.md</code>.</p>
+            </div>
+          </div>
+          
+          <div id="contact-error" class="status-panel error" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span id="contact-error-text">Please resolve the form errors before submitting.</span>
+          </div>
+
+          <form id="studio-contact-form" novalidate>
+            <div class="form-group">
+              <label for="contact-name">Full Name</label>
+              <input type="text" id="contact-name" placeholder="Elena Vance" required aria-required="true" />
+            </div>
+            
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" placeholder="elena@example.com" required aria-required="true" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-topic">Topic</label>
+              <input type="text" id="contact-topic" placeholder="Collaboration / General Inquiry / Sketch Idea" required aria-required="true" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" rows="5" placeholder="Share your thoughts..." required aria-required="true"></textarea>
+            </div>
+
+            <label class="form-checkbox">
+              <input type="checkbox" id="contact-newsletter-subscribe" checked />
+              <span>Sign me up for the weekly artist newsletter for sketching tips and studio guides!</span>
+            </label>
+
+            <button type="submit" class="cta-btn" style="width:100%; justify-content:center; padding:1rem;">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-header {
+    padding: 5rem 0 3rem 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .contact-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  .contact-sub {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .contact-main {
+    padding: 5rem 1.5rem;
+  }
+
+  .contact-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+  }
+  @media (max-width: 900px) {
+    .contact-layout-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .contact-details-side h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .contact-details-side p {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .contact-info-list {
+    list-style: none;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .contact-info-list li {
+    display: flex;
+    flex-direction: column;
+  }
+  .info-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 0.25rem;
+  }
+  .info-val {
+    font-size: 1.15rem;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .contact-details-side h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+</style>
+
+<script>
+  // Accessible form validation script
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("studio-contact-form") as HTMLFormElement;
+    const nameInput = document.getElementById("contact-name") as HTMLInputElement;
+    const emailInput = document.getElementById("contact-email") as HTMLInputElement;
+    const topicInput = document.getElementById("contact-topic") as HTMLInputElement;
+    const messageInput = document.getElementById("contact-message") as HTMLTextAreaElement;
+    
+    const successPanel = document.getElementById("contact-success") as HTMLDivElement;
+    const errorPanel = document.getElementById("contact-error") as HTMLDivElement;
+    const errorText = document.getElementById("contact-error-text") as HTMLSpanElement;
+
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        // Reset panels
+        successPanel.style.display = "none";
+        errorPanel.style.display = "none";
+
+        let errors: string[] = [];
+
+        // Validate name
+        if (!nameInput.value.trim()) {
+          errors.push("Full Name is required.");
+          nameInput.style.borderColor = "var(--color-accent)";
+        } else {
+          nameInput.style.borderColor = "var(--color-border)";
+        }
+
+        // Validate email
+        const email = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email) {
+          errors.push("Email Address is required.");
+          emailInput.style.borderColor = "var(--color-accent)";
+        } else if (!emailRegex.test(email)) {
+          errors.push("Please enter a valid email address.");
+          emailInput.style.borderColor = "var(--color-accent)";
+        } else {
+          emailInput.style.borderColor = "var(--color-border)";
+        }
+
+        // Validate topic
+        if (!topicInput.value.trim()) {
+          errors.push("Topic is required.");
+          topicInput.style.borderColor = "var(--color-accent)";
+        } else {
+          topicInput.style.borderColor = "var(--color-border)";
+        }
+
+        // Validate message
+        if (!messageInput.value.trim()) {
+          errors.push("Message body is required.");
+          messageInput.style.borderColor = "var(--color-accent)";
+        } else {
+          messageInput.style.borderColor = "var(--color-border)";
+        }
+
+        if (errors.length > 0) {
+          errorText.textContent = errors[0]; // Show first error
+          errorPanel.style.display = "flex";
+          errorPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          return;
+        }
+
+        // Form valid: show demo success panel and reset form fields
+        successPanel.style.display = "flex";
+        form.reset();
+        successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+  });
+</script>

@@ -1,0 +1,59 @@
+---
+interface Props {
+  slotId?: string;
+  type?: 'banner' | 'sidebar' | 'in-feed';
+}
+
+const { slotId = "default-ad", type = 'banner' } = Astro.props;
+
+const styles = {
+  banner: "max-width: 728px; height: 90px; margin: 2rem auto;",
+  sidebar: "max-width: 300px; height: 250px; margin: 1.5rem auto;",
+  'in-feed': "max-width: 100%; height: 120px; margin: 1rem 0;"
+};
+---
+
+<div class="ad-container" style={styles[type]} data-slot={slotId}>
+  <div class="ad-box">
+    <span class="ad-label">Advertisement</span>
+    <span class="ad-spec">{type === 'banner' ? 'Leaderboard (728x90)' : type === 'sidebar' ? 'Medium Rectangle (300x250)' : 'In-Feed Slot'}</span>
+    <!-- Config comment for future ad integrations (like Google AdSense or Mediavine) -->
+    <!-- Place <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxx" data-ad-slot="yyy"></ins> here -->
+  </div>
+</div>
+
+<style>
+  .ad-container {
+    width: 100%;
+    background-color: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .ad-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--color-text-muted);
+  }
+  
+  .ad-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+  
+  .ad-spec {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 0.25rem;
+  }
+</style>
