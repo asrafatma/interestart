@@ -9,7 +9,7 @@ displayDate: "July 11, 2026"
 readTime: "7 min read"
 heroImage: "/images/charcoal_study.jpg"
 heroAlt: "A vintage charcoal sketch study resembling a classic art landscape"
-author: "Alex Rivers"
+author: "Asra Fatma"
 tags: ["Art History", "Impressionism", "Monet", "French Art"]
 keywords: ["impressionist art history", "claude monet techniques", "history of impressionism"]
 featured: false

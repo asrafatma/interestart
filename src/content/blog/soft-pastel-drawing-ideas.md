@@ -9,7 +9,7 @@ displayDate: "July 2, 2026"
 readTime: "5 min read"
 heroImage: "/images/hero_artwork.jpg"
 heroAlt: "Abstract soft pastel sketch with warm creams and muted sages"
-author: "Alex Rivers"
+author: "Asra Fatma"
 tags: ["Pastels", "Drawing", "Aesthetic Art", "Sketching"]
 keywords: ["soft pastel tutorial", "pastel drawing ideas", "sketchbook ideas pastels"]
 featured: false

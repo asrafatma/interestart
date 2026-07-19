@@ -9,7 +9,7 @@ displayDate: "July 16, 2026"
 readTime: "5 min read"
 heroImage: "/images/pastel_sketch.jpg"
 heroAlt: "Graphite and charcoal study sketch of a realistic eye"
-author: "Alex Rivers"
+author: "Asra Fatma"
 tags: ["Drawing", "Sketching", "Realism", "Anatomy"]
 keywords: ["how to draw eyes", "realistic eye tutorial", "pencil sketch guide"]
 featured: false
