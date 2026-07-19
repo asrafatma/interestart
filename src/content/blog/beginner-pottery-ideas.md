@@ -9,7 +9,7 @@ displayDate: "July 5, 2026"
 readTime: "6 min read"
 heroImage: "/images/sculpture.jpg"
 heroAlt: "Minimalist ceramic pots and vases showing textured clay shapes"
-author: "Alex Rivers"
+author: "Asra Fatma"
 tags: ["Pottery", "Ceramics", "Sculpture", "Handbuilding"]
 keywords: ["pottery for beginners", "clay handbuilding tutorial", "make pinch pots at home"]
 featured: false
