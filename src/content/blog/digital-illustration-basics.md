@@ -9,7 +9,7 @@ displayDate: "July 14, 2026"
 readTime: "5 min read"
 heroImage: "/images/digital_art.jpg"
 heroAlt: "Minimalist digital silhouette illustration with warm cream background"
-author: "Alex Rivers"
+author: "Asra Fatma"
 tags: ["Digital Art", "Illustration", "Procreate", "Vector Art"]
 keywords: ["digital art basics", "digital illustration guide", "layers and blending modes"]
 featured: false

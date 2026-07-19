@@ -9,7 +9,7 @@ displayDate: "July 8, 2026"
 readTime: "5 min read"
 heroImage: "/images/diy_crafts.jpg"
 heroAlt: "Aesthetic bullet journal layout with pressed dried flowers and vintage pens"
-author: "Alex Rivers"
+author: "Asra Fatma"
 tags: ["DIY", "Crafts", "Journaling", "Pressed Flowers"]
 keywords: ["handmade paper crafts", "pressed flower journaling", "aesthetic DIY crafts"]
 featured: false
