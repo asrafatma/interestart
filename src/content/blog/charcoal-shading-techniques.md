@@ -9,7 +9,7 @@ displayDate: "June 28, 2026"
 readTime: "6 min read"
 heroImage: "/images/charcoal_study.jpg"
 heroAlt: "High-contrast dark charcoal drawing study showcasing shadows"
-author: "Alex Rivers"
+author: "Asra Fatma"
 tags: ["Charcoal", "Drawing", "Chiaroscuro", "Shading"]
 keywords: ["charcoal shading techniques", "vine charcoal tutorial", "chiaroscuro drawing guide"]
 featured: false
