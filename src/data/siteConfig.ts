@@ -3,11 +3,11 @@ export const siteConfig = {
   tagline: "Art inspiration, creative techniques, and beautiful ideas for every artist.",
   description: "A design-forward art blog by a software engineering student exploring fine art, sketching, digital illustration, and crafts.",
   siteUrl: "https://interestart.example", // Replace with your production domain (e.g. https://interestart.com)
-  contactEmail: "hello@interestart.example", // Replace with your contact email
+  contactEmail: "itsasrafatma@gmail.com", // Replace with your contact email
   defaultSocialImage: "/images/hero_artwork.jpg",
   author: {
-    name: "Alex Rivers",
-    avatarInitials: "AR",
+    name: "Asra Fatma",
+    avatarInitials: "AF",
     description: "A software engineering student exploring the connection between the precision of code and the expression of art."
   },
   social: {
