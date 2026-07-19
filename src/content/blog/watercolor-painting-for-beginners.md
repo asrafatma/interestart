@@ -9,7 +9,7 @@ displayDate: "July 18, 2026"
 readTime: "6 min read"
 heroImage: "/images/fine_art.jpg"
 heroAlt: "Impressionist watercolor painting with soft cream and pastel hues"
-author: "Alex Rivers"
+author: "Asra Fatma"
 tags: ["Watercolor", "Fine Art", "Painting", "Beginner Art"]
 keywords: ["watercolor for beginners", "watercolor landscape tutorial", "learn to paint watercolors"]
 featured: true
