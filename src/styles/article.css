@@ -24,26 +24,26 @@
 
 .post-body {
   font-family: var(--font-sans);
-  font-size: 1.125rem; /* 18px */
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.75;
   color: var(--color-text);
 }
 
 @media (max-width: 768px) {
   .post-body {
-    font-size: 1rem; /* 16px */
+    font-size: 0.95rem;
     line-height: 1.7;
   }
 }
 
 /* Article spacing rules */
 .post-body p {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.65rem;
 }
 
 .post-body .intro {
   font-family: var(--font-artistic);
-  font-size: 1.3rem;
+  font-size: 1.12rem;
   font-style: italic;
   line-height: 1.7;
   color: var(--color-accent);
@@ -52,18 +52,18 @@
 
 .post-body h2 {
   font-family: var(--font-display);
-  font-size: 2rem;
-  margin-top: 3rem;
-  margin-bottom: 1.25rem;
+  font-size: 1.8rem;
+  margin-top: 2.75rem;
+  margin-bottom: 1.15rem;
   color: var(--color-text);
   letter-spacing: -0.025em;
 }
 
 .post-body h3 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  margin-top: 2.25rem;
-  margin-bottom: 1rem;
+  font-size: 1.35rem;
+  margin-top: 2rem;
+  margin-bottom: 0.9rem;
   color: var(--color-text);
   letter-spacing: -0.02em;
 }
@@ -80,12 +80,12 @@
 /* Blockquotes - Deep artistic aesthetic */
 .post-body blockquote {
   border-left: 4px solid var(--color-accent);
-  padding: 1.25rem 1.75rem;
-  margin: 2.5rem 0;
+  padding: 1.15rem 1.5rem;
+  margin: 2.25rem 0;
   font-family: var(--font-artistic);
   font-style: italic;
-  font-size: 1.3rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.65;
   background-color: var(--color-surface);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   color: var(--color-text);
