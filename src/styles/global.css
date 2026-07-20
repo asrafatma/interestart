@@ -41,11 +41,27 @@ body {
 
 /* Typography elements */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
   color: var(--color-text);
+}
+
+/* Deep artistic typography for quotes, philosophy, history notes, and classical reflections */
+.artistic-font,
+.editorial-quote,
+.about-highlight,
+.artistic-statement,
+.art-history-quote,
+blockquote {
+  font-family: var(--font-artistic);
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
 }
 
 a {
