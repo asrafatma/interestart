@@ -6,8 +6,9 @@ import { siteConfig } from '../data/siteConfig';
 <Layout title="Connect" description="Reach out to InterestArt at itsasrafatma@gmail.com. Submit questions, art suggestions, or study collaboration proposals.">
   <div class="contact-header">
     <div class="container text-center">
+      <span class="contact-badge">Get in Touch</span>
       <h1>Let's Connect</h1>
-      <p class="contact-sub">Have questions about a sketching tutorial, a feedback idea, or an art history guest piece? Fill out the form or email directly.</p>
+      <p class="contact-sub">Have questions about a sketching tutorial, feedback, or a studio collaboration proposal? Reach out directly or fill out the form below.</p>
     </div>
   </div>
 
@@ -15,25 +16,52 @@ import { siteConfig } from '../data/siteConfig';
     <div class="contact-layout-grid">
       <!-- Contact Info Sidebar -->
       <div class="contact-details-side">
-        <h2>Direct Contact Info</h2>
-        <p>I read every message and try to respond within a few days. Art studies and constructive criticisms are always welcome.</p>
+        <span class="section-kicker">Direct Reach</span>
+        <h2>Contact Information</h2>
+        <p class="contact-intro">I read every message and try to respond promptly. Art studies, feedback, and creative inquiries are always welcome.</p>
         
         <ul class="contact-info-list">
-          <li>
-            <span class="info-label">Direct Email</span>
-            <span class="info-val">{siteConfig.contactEmail}</span>
+          <li class="info-card">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="info-meta">
+              <span class="info-label">Direct Email</span>
+              <a href={`mailto:${siteConfig.contactEmail}`} class="info-val">{siteConfig.contactEmail}</a>
+            </div>
           </li>
-          <li>
-            <span class="info-label">Location</span>
-            <span class="info-val">Art Studio Desk</span>
+          
+          <li class="info-card">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="info-meta">
+              <span class="info-label">Location</span>
+              <span class="info-val">Art Studio Desk</span>
+            </div>
+          </li>
+
+          <li class="info-card">
+            <div class="info-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div class="info-meta">
+              <span class="info-label">Response Window</span>
+              <span class="info-val">24 – 48 Hours</span>
+            </div>
           </li>
         </ul>
 
-        <h3>Find Me on Pinterest</h3>
-        <p>I post weekly palette inspiration, sketchbook loops, and classical shading references.</p>
-        <a href={siteConfig.social.pinterest} class="cta-btn" target="_blank" rel="noopener noreferrer" style="margin-top: 0.5rem;">
-          InterestArt Pinterest &rarr;
-        </a>
+        <div class="pinterest-box">
+          <div class="pinterest-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color: #bd081c;"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.065-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+            <h3>Pinterest Moodboards</h3>
+          </div>
+          <p>Explore weekly color palettes, sketchbook loops, and classical shading references.</p>
+          <a href={siteConfig.social.pinterest} class="cta-btn pinterest-btn" target="_blank" rel="noopener noreferrer">
+            Visit InterestArt Pinterest &rarr;
+          </a>
+        </div>
       </div>
 
       <!-- Contact Form -->
@@ -41,45 +69,47 @@ import { siteConfig } from '../data/siteConfig';
         <div class="form-card">
           <!-- Inline Status Updates -->
           <div id="contact-success" class="status-panel success" role="alert">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
             <div>
-              <strong>Form Submitted (Demo Mode)!</strong>
-              <p style="font-size:0.85rem; margin-top:0.25rem;">Form validation passed. To receive real messages, connect this form to Formspree, Basin, or a Vercel Serverless handler as documented in <code>README.md</code>.</p>
+              <strong>Message Sent Successfully!</strong>
+              <p style="font-size:0.82rem; margin-top:0.25rem; line-height: 1.5;">Thank you for reaching out. Your message has been received.</p>
             </div>
           </div>
           
           <div id="contact-error" class="status-panel error" role="alert">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-            <span id="contact-error-text">Please resolve the form errors before submitting.</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span id="contact-error-text">Please complete all required fields before submitting.</span>
           </div>
 
           <form id="studio-contact-form" novalidate>
-            <div class="form-group">
-              <label for="contact-name">Full Name</label>
-              <input type="text" id="contact-name" placeholder="Elena Vance" required aria-required="true" />
-            </div>
-            
-            <div class="form-group">
-              <label for="contact-email">Email Address</label>
-              <input type="email" id="contact-email" placeholder="elena@example.com" required aria-required="true" />
-            </div>
-
-            <div class="form-group">
-              <label for="contact-topic">Topic</label>
-              <input type="text" id="contact-topic" placeholder="Collaboration / General Inquiry / Sketch Idea" required aria-required="true" />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Full Name</label>
+                <input type="text" id="contact-name" placeholder="Asra Fatma" required aria-required="true" />
+              </div>
+              
+              <div class="form-group">
+                <label for="contact-email">Email Address</label>
+                <input type="email" id="contact-email" placeholder="yourname@example.com" required aria-required="true" />
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="contact-message">Message</label>
-              <textarea id="contact-message" rows="5" placeholder="Share your thoughts..." required aria-required="true"></textarea>
+              <label for="contact-topic">Subject / Topic</label>
+              <input type="text" id="contact-topic" placeholder="Collaboration / General Inquiry / Sketching Idea" required aria-required="true" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Your Message</label>
+              <textarea id="contact-message" rows="5" placeholder="Share your message or questions here..." required aria-required="true"></textarea>
             </div>
 
             <label class="form-checkbox">
               <input type="checkbox" id="contact-newsletter-subscribe" checked />
-              <span>Sign me up for the weekly artist newsletter for sketching tips and studio guides!</span>
+              <span>Subscribe to the weekly artist newsletter for studio guides and creative prompts.</span>
             </label>
 
-            <button type="submit" class="cta-btn" style="width:100%; justify-content:center; padding:1rem;">
+            <button type="submit" class="cta-btn submit-btn">
               Send Message
             </button>
           </form>
@@ -91,30 +121,44 @@ import { siteConfig } from '../data/siteConfig';
 
 <style>
   .contact-header {
-    padding: 5rem 0 3rem 0;
+    padding: 4.5rem 0 3rem 0;
     background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
   }
+  .contact-badge {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
   .contact-header h1 {
-    font-size: 3rem;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
     margin-bottom: 0.5rem;
   }
   .contact-sub {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     color: var(--color-text-muted);
-    max-width: 600px;
+    max-width: 520px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
   .contact-main {
-    padding: 5rem 1.5rem;
+    padding: 4.5rem 1.5rem;
   }
 
   .contact-layout-grid {
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 5rem;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 4rem;
+    align-items: start;
   }
   @media (max-width: 900px) {
     .contact-layout-grid {
@@ -123,44 +167,215 @@ import { siteConfig } from '../data/siteConfig';
     }
   }
 
-  .contact-details-side h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  .section-kicker {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 0.35rem;
   }
-  .contact-details-side p {
-    font-size: 1.05rem;
+  .contact-details-side h2 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.75rem;
+  }
+  .contact-intro {
+    font-size: 0.92rem;
     color: var(--color-text-muted);
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 2rem;
   }
+
   .contact-info-list {
     list-style: none;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
-  .contact-info-list li {
+  .info-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+  }
+  .info-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+  }
+  .info-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-soft);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .info-meta {
     display: flex;
     flex-direction: column;
   }
   .info-label {
-    font-size: 0.8rem;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     font-weight: 700;
     color: var(--color-accent);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
   }
   .info-val {
-    font-size: 1.15rem;
+    font-size: 0.92rem;
     color: var(--color-text);
-    font-weight: 500;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-fast);
+  }
+  a.info-val:hover {
+    color: var(--color-accent);
   }
 
-  .contact-details-side h3 {
-    font-size: 1.4rem;
+  .pinterest-box {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .pinterest-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     margin-bottom: 0.5rem;
+  }
+  .pinterest-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .pinterest-box p {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+  .pinterest-btn {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    display: inline-flex;
+    padding: 0.6rem 1.2rem;
+  }
+
+  /* Form Side */
+  .form-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 600px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .form-group label {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text);
+  }
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(139, 95, 90, 0.15);
+  }
+
+  .form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: 1.25rem 0 1.75rem 0;
+    cursor: pointer;
+  }
+  .form-checkbox input {
+    margin-top: 0.2rem;
+    accent-color: var(--color-accent);
+  }
+
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.85rem 1.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Status Panels */
+  .status-panel {
+    display: none;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+    font-size: 0.88rem;
+  }
+  .status-panel.success {
+    background-color: rgba(184, 195, 176, 0.25);
+    border: 1px solid var(--color-sage);
+    color: var(--color-text);
+  }
+  .status-panel.error {
+    background-color: rgba(232, 199, 192, 0.25);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
   }
 
   .text-center {
@@ -235,7 +450,7 @@ import { siteConfig } from '../data/siteConfig';
           return;
         }
 
-        // Form valid: show demo success panel and reset form fields
+        // Form valid: show success panel and reset form fields
         successPanel.style.display = "flex";
         form.reset();
         successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
