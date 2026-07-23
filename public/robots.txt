@@ -1,6 +1,30 @@
+# Allow all friendly search engine crawlers
 User-agent: *
 Allow: /
 Disallow: /drafts/
 Disallow: /404/
 
-Sitemap: https://interestart.example/sitemap-index.xml
+# Disallow aggressive AI training scrapers/crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# Link to sitemap (Replace interestart.example with your production domain)
+Sitemap: https://interestart.example/sitemap.xml
