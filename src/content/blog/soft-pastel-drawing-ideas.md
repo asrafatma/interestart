@@ -7,7 +7,7 @@ categorySlug: "pastel-art"
 date: "2026-07-02"
 displayDate: "July 2, 2026"
 readTime: "5 min read"
-heroImage: "/images/hero_artwork.jpg"
+heroImage: "/images/hero_artwork.webp"
 heroAlt: "Abstract soft pastel sketch with warm creams and muted sages"
 author: "Asra Fatma"
 tags: ["Pastels", "Drawing", "Aesthetic Art", "Sketching"]
@@ -15,8 +15,8 @@ keywords: ["soft pastel tutorial", "pastel drawing ideas", "sketchbook ideas pas
 featured: false
 draft: false
 seasonal: false
-pinterestImage: "/images/hero_artwork.jpg"
-ogImage: "/images/hero_artwork.jpg"
+pinterestImage: "/images/hero_artwork.webp"
+ogImage: "/images/hero_artwork.webp"
 toc: true
 ---
 
