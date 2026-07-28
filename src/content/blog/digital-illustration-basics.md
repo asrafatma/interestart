@@ -7,7 +7,7 @@ categorySlug: "digital-art"
 date: "2026-07-14"
 displayDate: "July 14, 2026"
 readTime: "5 min read"
-heroImage: "/images/digital_art.jpg"
+heroImage: "/images/digital_art.webp"
 heroAlt: "Minimalist digital silhouette illustration with warm cream background"
 author: "Asra Fatma"
 tags: ["Digital Art", "Illustration", "Procreate", "Vector Art"]
@@ -15,8 +15,8 @@ keywords: ["digital art basics", "digital illustration guide", "layers and blend
 featured: false
 draft: false
 seasonal: false
-pinterestImage: "/images/digital_art.jpg"
-ogImage: "/images/digital_art.jpg"
+pinterestImage: "/images/digital_art.webp"
+ogImage: "/images/digital_art.webp"
 toc: true
 ---
 
