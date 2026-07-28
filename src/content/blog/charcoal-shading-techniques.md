@@ -7,7 +7,7 @@ categorySlug: "charcoal-art"
 date: "2026-06-28"
 displayDate: "June 28, 2026"
 readTime: "6 min read"
-heroImage: "/images/charcoal_study.jpg"
+heroImage: "/images/charcoal_study.webp"
 heroAlt: "High-contrast dark charcoal drawing study showcasing shadows"
 author: "Asra Fatma"
 tags: ["Charcoal", "Drawing", "Chiaroscuro", "Shading"]
@@ -15,8 +15,8 @@ keywords: ["charcoal shading techniques", "vine charcoal tutorial", "chiaroscuro
 featured: false
 draft: false
 seasonal: false
-pinterestImage: "/images/charcoal_study.jpg"
-ogImage: "/images/charcoal_study.jpg"
+pinterestImage: "/images/charcoal_study.webp"
+ogImage: "/images/charcoal_study.webp"
 toc: true
 ---
 
