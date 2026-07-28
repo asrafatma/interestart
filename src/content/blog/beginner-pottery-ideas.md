@@ -7,7 +7,7 @@ categorySlug: "sculpture-pottery"
 date: "2026-07-05"
 displayDate: "July 5, 2026"
 readTime: "6 min read"
-heroImage: "/images/sculpture.jpg"
+heroImage: "/images/sculpture.webp"
 heroAlt: "Minimalist ceramic pots and vases showing textured clay shapes"
 author: "Asra Fatma"
 tags: ["Pottery", "Ceramics", "Sculpture", "Handbuilding"]
@@ -15,8 +15,8 @@ keywords: ["pottery for beginners", "clay handbuilding tutorial", "make pinch po
 featured: false
 draft: false
 seasonal: false
-pinterestImage: "/images/sculpture.jpg"
-ogImage: "/images/sculpture.jpg"
+pinterestImage: "/images/sculpture.webp"
+ogImage: "/images/sculpture.webp"
 toc: true
 ---
 
