@@ -12,8 +12,8 @@ export const siteConfig = {
   },
   social: {
     pinterest: "https://pin.it/41bCEbK4H", // Replace with your Pinterest profile
-    instagram: "https://instagram.com/interestart_placeholder", // Replace with your Instagram profile
-    github: "https://github.com/interestart_placeholder" // Replace with your GitHub profile
+    instagram: "https://instagram.com/asra._.06", // Replace with your Instagram profile
+    github: "https://github.com/asrawazir" // Replace with your GitHub profile
   },
   navigation: [
     { label: "Feed", href: "/" },
