@@ -74,7 +74,7 @@ To add a new article:
    date: "2026-07-18"
    displayDate: "July 18, 2026"
    readTime: "5 min read"
-   heroImage: "/images/fine_art.jpg"
+   heroImage: "/images/fine_art.webp"
    heroAlt: "A beautiful acrylic painting landscape"
    author: "Alex Rivers"
    tags: ["Acrylics", "Fine Art", "Painting", "Tutorial"]
@@ -82,8 +82,8 @@ To add a new article:
    featured: false
    draft: false
    seasonal: false
-   pinterestImage: "/images/fine_art.jpg"
-   ogImage: "/images/fine_art.jpg"
+   pinterestImage: "/images/fine_art.webp"
+   ogImage: "/images/fine_art.webp"
    toc: true
    ---
    ```
@@ -95,7 +95,7 @@ To add a new article:
 - Place all artwork images, background heroes, and profile pictures inside:
   `public/images/`
 - Set appropriate Pinterest dimensions (ideal aspect ratio of `2:3`, e.g. `1000px x 1500px` or `1024px x 1536px`) for optimal pins.
-- Reference the image file path relative to the public root in frontmatter parameters (e.g. `/images/my_new_artwork.jpg`).
+- Reference the image file path relative to the public root in frontmatter parameters (e.g. `/images/my_new_artwork.webp`).
 - Always write descriptive, keyword-rich `heroAlt` descriptions to support Google Image Search crawling.
 
 ### 3. Deploying to Vercel
