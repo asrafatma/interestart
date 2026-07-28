@@ -7,7 +7,7 @@ categorySlug: "diy-crafts"
 date: "2026-07-08"
 displayDate: "July 8, 2026"
 readTime: "5 min read"
-heroImage: "/images/diy_crafts.jpg"
+heroImage: "/images/diy_crafts.webp"
 heroAlt: "Aesthetic bullet journal layout with pressed dried flowers and vintage pens"
 author: "Asra Fatma"
 tags: ["DIY", "Crafts", "Journaling", "Pressed Flowers"]
@@ -15,8 +15,8 @@ keywords: ["handmade paper crafts", "pressed flower journaling", "aesthetic DIY 
 featured: false
 draft: false
 seasonal: false
-pinterestImage: "/images/diy_crafts.jpg"
-ogImage: "/images/diy_crafts.jpg"
+pinterestImage: "/images/diy_crafts.webp"
+ogImage: "/images/diy_crafts.webp"
 toc: true
 ---
 
