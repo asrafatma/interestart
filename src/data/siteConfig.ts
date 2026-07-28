@@ -11,7 +11,7 @@ export const siteConfig = {
     description: "A software engineering student exploring the connection between the precision of code and the expression of art."
   },
   social: {
-    pinterest: "https://pinterest.com/interestart_placeholder", // Replace with your Pinterest profile
+    pinterest: "https://pin.it/41bCEbK4H", // Replace with your Pinterest profile
     instagram: "https://instagram.com/interestart_placeholder", // Replace with your Instagram profile
     github: "https://github.com/interestart_placeholder" // Replace with your GitHub profile
   },
