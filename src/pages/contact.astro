@@ -450,10 +450,50 @@ import { siteConfig } from '../data/siteConfig';
           return;
         }
 
-        // Form valid: show success panel and reset form fields
-        successPanel.style.display = "flex";
-        form.reset();
-        successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        // Form valid: Submit to Web3Forms via AJAX
+        const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+
+        const newsletterCheckbox = document.getElementById("contact-newsletter-subscribe") as HTMLInputElement;
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            access_key: "c8a8c21c-b8e6-4f91-a536-383d36578cce",
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            subject: topicInput.value.trim(),
+            message: messageInput.value.trim(),
+            newsletter_subscribe: newsletterCheckbox?.checked ? "Yes" : "No"
+          })
+        })
+        .then(async (response) => {
+          const json = await response.json();
+          if (response.status === 200) {
+            successPanel.style.display = "flex";
+            form.reset();
+            successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          } else {
+            errorText.textContent = json.message || "Something went wrong. Please try again later.";
+            errorPanel.style.display = "flex";
+            errorPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        })
+        .catch(() => {
+          errorText.textContent = "Something went wrong. Please check your internet connection and try again.";
+          errorPanel.style.display = "flex";
+          errorPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        });
       });
     }
   });
