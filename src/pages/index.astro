@@ -39,7 +39,18 @@ categories.forEach(cat => {
     <div class="hero-container">
       <div class="hero-content">
         <span class="hero-tagline">{siteConfig.tagline}</span>
-        <h1 id="hero-title" class="hero-h1">Where Code Meets the Canvas</h1>
+        <h1 id="hero-title" class="hero-h1" aria-label="Where Code Meets the Canvas">
+          <span class="title-word-wrapper"><span class="title-word animate-fade-slide" style="animation-delay: 0.2s;">Where</span></span>
+          <span class="title-word-wrapper"><span class="title-word animate-fade-slide" style="animation-delay: 0.35s;">Code</span></span>
+          <span class="title-word-wrapper"><span class="title-word animate-fade-slide" style="animation-delay: 0.5s;">Meets</span></span>
+          <span class="title-word-wrapper"><span class="title-word animate-fade-slide" style="animation-delay: 0.65s;">the</span></span>
+          <span class="canvas-highlight-container">
+            <span class="title-word-wrapper"><span class="title-word animate-fade-slide" style="animation-delay: 0.8s;">Canvas</span></span>
+            <svg class="brush-stroke" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M5,14 C50,4 150,4 195,12 C140,15 60,11 15,15" stroke="var(--color-accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+            </svg>
+          </span>
+        </h1>
         <p class="hero-description">
           Create, learn, and find inspiration through painting, drawing, digital art, art history, and handmade creativity. Explore techniques that balance structured thinking with visual expression.
         </p>
@@ -57,6 +68,7 @@ categories.forEach(cat => {
       </div>
     </div>
   </section>
+
 
   <!-- Featured Post Section -->
   {featuredPost && (
@@ -177,6 +189,9 @@ categories.forEach(cat => {
     color: var(--color-accent);
     display: block;
     margin-bottom: 1rem;
+    opacity: 0;
+    animation: slideDownFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.1s;
   }
   .hero-h1 {
     font-family: var(--font-display);
@@ -191,6 +206,55 @@ categories.forEach(cat => {
       font-size: 2.4rem;
     }
   }
+
+  /* Word Split Reveal Styles */
+  .title-word-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    margin-right: 0.24em;
+    position: relative;
+    z-index: 2;
+  }
+  .title-word-wrapper:last-child {
+    margin-right: 0;
+  }
+  .title-word {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  .animate-fade-slide {
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .canvas-highlight-container {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+  }
+  .canvas-highlight-container .title-word {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .brush-stroke {
+    position: absolute;
+    left: -5%;
+    bottom: -6px;
+    width: 110%;
+    height: 12px;
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .brush-stroke path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: drawStroke 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 1.2s;
+  }
+
   .hero-description {
     font-size: 0.98rem;
     color: var(--color-text-muted);
@@ -198,10 +262,16 @@ categories.forEach(cat => {
     margin-bottom: 2.25rem;
     max-width: 520px;
     letter-spacing: 0.01em;
+    opacity: 0;
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.95s;
   }
   .hero-actions {
     display: flex;
     gap: 1rem;
+    opacity: 0;
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.1s;
   }
   @media (max-width: 900px) {
     .hero-actions {
@@ -210,6 +280,9 @@ categories.forEach(cat => {
   }
   .hero-visual {
     position: relative;
+    opacity: 0;
+    animation: visualReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.4s;
   }
   .hero-img {
     width: 100%;
@@ -227,10 +300,63 @@ categories.forEach(cat => {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
     max-width: 250px;
+    opacity: 0;
+    transform: translateX(30px);
+    animation: badgeReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.5s;
   }
   @media (max-width: 900px) {
     .hero-badge {
       display: none;
+    }
+  }
+
+  /* Entrance Keyframes */
+  @keyframes slideDownFade {
+    from {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideUpFade {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes drawStroke {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes visualReveal {
+    from {
+      opacity: 0;
+      transform: scale(1.04);
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+  @keyframes badgeReveal {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
   .badge-title {
