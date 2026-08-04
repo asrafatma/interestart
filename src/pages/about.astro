@@ -15,12 +15,13 @@ import { siteConfig } from '../data/siteConfig';
     <div class="about-grid">
       <!-- Image Column -->
       <div class="about-image-side">
-        <!-- Tasteful local placeholder block -->
-        <div class="profile-image-placeholder">
-          <span>{siteConfig.author.avatarInitials}</span>
-        </div>
+        <img 
+          src="/images/profile.jpg" 
+          alt={siteConfig.author.name} 
+          class="profile-image" 
+        />
         <p class="image-note">
-          Editable Placeholder &middot; Add your profile picture in <code>public/images/profile.jpg</code>
+          {siteConfig.author.name} &middot; Software Engineering Student & Artist
         </p>
       </div>
 
@@ -119,19 +120,18 @@ import { siteConfig } from '../data/siteConfig';
     text-align: center;
   }
   
-  .profile-image-placeholder {
+  .profile-image {
     width: 100%;
     height: 350px;
-    background-color: var(--color-surface-soft);
-    border: 2px dashed var(--color-border);
+    object-fit: cover;
     border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-artistic);
-    font-size: 5rem;
-    font-weight: 700;
-    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .profile-image:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-md);
   }
   .image-note {
     font-size: 0.8rem;
