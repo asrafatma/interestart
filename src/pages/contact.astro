@@ -450,7 +450,7 @@ import { siteConfig } from '../data/siteConfig';
           return;
         }
 
-        // Form valid: Submit to Web3Forms via AJAX
+        // Form valid: Submit to Formspree via AJAX
         const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
         const originalBtnText = submitBtn.textContent;
         submitBtn.disabled = true;
@@ -458,29 +458,30 @@ import { siteConfig } from '../data/siteConfig';
 
         const newsletterCheckbox = document.getElementById("contact-newsletter-subscribe") as HTMLInputElement;
 
-        fetch("https://api.web3forms.com/submit", {
+        fetch("https://formspree.io/f/xljrjjrl", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
           },
           body: JSON.stringify({
-            access_key: "c8a8c21c-b8e6-4f91-a536-383d36578cce",
             name: nameInput.value.trim(),
             email: emailInput.value.trim(),
             subject: topicInput.value.trim(),
+            _subject: `New Contact Form Message: ${topicInput.value.trim()}`,
             message: messageInput.value.trim(),
             newsletter_subscribe: newsletterCheckbox?.checked ? "Yes" : "No"
           })
         })
         .then(async (response) => {
-          const json = await response.json();
-          if (response.status === 200) {
+          if (response.ok) {
             successPanel.style.display = "flex";
             form.reset();
             successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           } else {
-            errorText.textContent = json.message || "Something went wrong. Please try again later.";
+            const json = await response.json().catch(() => null);
+            const message = json?.errors?.map((err: any) => err.message).join(" ");
+            errorText.textContent = message || "Something went wrong. Please try again later.";
             errorPanel.style.display = "flex";
             errorPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
