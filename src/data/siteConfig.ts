@@ -2,8 +2,8 @@ export const siteConfig = {
   siteName: "InterestArt",
   tagline: "Art inspiration, creative techniques, and beautiful ideas for every artist.",
   description: "A design-forward art blog by a software engineering student exploring fine art, sketching, digital illustration, and crafts.",
-  siteUrl: "https://interestart.example", // Replace with your production domain (e.g. https://interestart.com)
-  contactEmail: "itsasrafatma@gmail.com", // Replace with your contact email
+  siteUrl: "https://interestart.com",
+  contactEmail: "itsasrafatma@gmail.com",
   defaultSocialImage: "/images/hero_artwork.webp",
   author: {
     name: "Asra Fatma",
