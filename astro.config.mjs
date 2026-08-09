@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://interestart.example',
+  site: 'https://interestart.com',
   integrations: [sitemap()],
   output: 'static'
 });
