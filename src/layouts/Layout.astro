@@ -73,7 +73,17 @@ const defaultJsonLd = {
     <!-- Favicon and RSS -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title={`${siteConfig.siteName} RSS Feed`} href="/rss.xml" />
-    
+
+    <!-- Google tag (gtag.js) -->
+    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-65CJJWC7J9"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-65CJJWC7J9');
+    </script>
+
     <!-- Inline Theme Initializer script (Runs synchronously before DOM renders to prevent theme flash) -->
     <script is:inline>
       (function() {
