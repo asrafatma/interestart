@@ -74,28 +74,28 @@ To add a new article:
    date: "2026-07-18"
    displayDate: "July 18, 2026"
    readTime: "5 min read"
-   heroImage: "/images/fine_art.webp"
+   heroImage: "/images/acrylic-painting-basics/hero.webp"
    heroAlt: "A beautiful acrylic painting landscape"
-   author: "Alex Rivers"
+   author: "Asra Fatma"
    tags: ["Acrylics", "Fine Art", "Painting", "Tutorial"]
    keywords: ["acrylic painting", "learn to paint acrylics", "acrylics for beginners"]
    featured: false
    draft: false
    seasonal: false
-   pinterestImage: "/images/fine_art.webp"
-   ogImage: "/images/fine_art.webp"
+   pinterestImage: "/images/acrylic-painting-basics/hero.webp"
+   ogImage: "/images/acrylic-painting-basics/hero.webp"
    toc: true
    ---
    ```
 3. Write the article content in Markdown underneath the frontmatter block.
 4. Run `npm run verify` to ensure the post satisfies all schema validations.
 
-### 2. Replacing and Optimizing Images
+### 2. Adding Post Images
 
-- Place all artwork images, background heroes, and profile pictures inside:
-  `public/images/`
+- Each post gets its own image folder under `public/images/`, named to match the post's `.md` filename / URL slug exactly: `public/images/<post-slug>/`.
+- Place the hero image as `hero.webp` inside that folder (e.g. `public/images/acrylic-painting-basics/hero.webp`). Additional in-article or Pinterest-specific images can live in the same folder.
 - Set appropriate Pinterest dimensions (ideal aspect ratio of `2:3`, e.g. `1000px x 1500px` or `1024px x 1536px`) for optimal pins.
-- Reference the image file path relative to the public root in frontmatter parameters (e.g. `/images/my_new_artwork.webp`).
+- Reference images in frontmatter via absolute path from the folder above (e.g. `/images/acrylic-painting-basics/hero.webp`).
 - Always write descriptive, keyword-rich `heroAlt` descriptions to support Google Image Search crawling.
 
 ### 3. Deploying to Vercel
