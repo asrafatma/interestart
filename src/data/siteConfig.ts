@@ -1,7 +1,7 @@
 export const siteConfig = {
   siteName: "InterestArt",
   tagline: "Art inspiration, creative techniques, and beautiful ideas for every artist.",
-  description: "A design-forward art blog by a software engineering student exploring fine art, sketching, digital illustration, and crafts.",
+  description: "InterestArt is a design-forward art blog created by Asra Fatma, a software engineering student exploring fine art, sketching, digital illustration, and crafts.",
   siteUrl: "https://interestart.com",
   contactEmail: "itsasrafatma@gmail.com",
   defaultSocialImage: "/images/hero_artwork.webp",
