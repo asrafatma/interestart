@@ -36,7 +36,22 @@ const defaultJsonLd = {
   "@type": "WebSite",
   "name": siteConfig.siteName,
   "url": siteConfig.siteUrl,
-  "description": siteConfig.tagline
+  "description": siteConfig.tagline,
+  "author": {
+    "@type": "Person",
+    "name": siteConfig.author.name,
+    "url": new URL("/about/", siteConfig.siteUrl).href
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": siteConfig.siteName,
+    "url": siteConfig.siteUrl,
+    "founder": {
+      "@type": "Person",
+      "name": siteConfig.author.name,
+      "url": new URL("/about/", siteConfig.siteUrl).href
+    }
+  }
 };
 ---
 
