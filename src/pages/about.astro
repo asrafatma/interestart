@@ -1,9 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../data/siteConfig';
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": siteConfig.author.name,
+    "url": new URL("/about/", siteConfig.siteUrl).href,
+    "image": new URL("/images/profile.webp", siteConfig.siteUrl).href,
+    "description": siteConfig.author.description,
+    "jobTitle": "Founder & Creator",
+    "sameAs": [
+      siteConfig.social.pinterest,
+      siteConfig.social.instagram,
+      siteConfig.social.github
+    ],
+    "founderOf": {
+      "@type": "Organization",
+      "name": siteConfig.siteName,
+      "url": siteConfig.siteUrl
+    }
+  }
+};
 ---
 
-<Layout title="My Story" description="Learn about the author behind InterestArt—a software engineering student exploring the connection between code precision and fine art expression.">
+<Layout
+  title="My Story"
+  description={`Meet ${siteConfig.author.name}, the founder and creator of InterestArt — a software engineering student exploring the connection between code precision and fine art expression.`}
+  jsonLd={personJsonLd}
+>
   <div class="about-header">
     <div class="container text-center">
       <h1>The Mind Behind the Studio</h1>
