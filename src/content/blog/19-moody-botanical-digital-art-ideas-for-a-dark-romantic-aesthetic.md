@@ -7,7 +7,7 @@ categorySlug: "digital-art"
 date: "2026-08-26"
 displayDate: "August 26, 2026"
 readTime: "10 min read"
-heroImage: "/images/19-moody-botanical-digital-art-ideas-for-a-dark-romantic-aesthetic/hero.webp"
+heroImage: "/images/19-moody-botanical-digital-art-ideas-for-a-dark-romantic-aesthetic/hero1.webp"
 heroAlt: "Digital illustration of dark florals and trailing vines, fine ink linework layered over painted shadow on a deep charcoal background"
 author: "Asra Fatma"
 tags: ["digital illustration", "botanical art", "dark academia", "moody aesthetic", "digital art ideas"]
