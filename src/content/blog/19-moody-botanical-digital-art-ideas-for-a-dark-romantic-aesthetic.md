@@ -15,8 +15,8 @@ keywords: ["moody botanical digital art", "dark romantic aesthetic art", "gothic
 featured: false
 draft: false
 seasonal: false
-pinterestImage: "/images/19-moody-botanical-digital-art-ideas-for-a-dark-romantic-aesthetic/hero.webp"
-ogImage: "/images/19-moody-botanical-digital-art-ideas-for-a-dark-romantic-aesthetic/hero.webp"
+pinterestImage: "/images/19-moody-botanical-digital-art-ideas-for-a-dark-romantic-aesthetic/hero1.webp"
+ogImage: "/images/19-moody-botanical-digital-art-ideas-for-a-dark-romantic-aesthetic/hero1.webp"
 toc: true
 ---
 
