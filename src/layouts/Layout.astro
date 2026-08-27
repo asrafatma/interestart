@@ -118,8 +118,6 @@ const defaultJsonLd = {
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd || defaultJsonLd)} />
 
-    <!-- Pinterest hover "Save" button on images -->
-    <script async defer data-pin-hover="true" data-pin-shape="round" src="https://assets.pinterest.com/js/pinit.js" is:inline></script>
   </head>
   <body>
     <!-- Skip to main content link for screen readers -->
@@ -135,5 +133,37 @@ const defaultJsonLd = {
 
     <!-- Footer section -->
     <Footer />
+
+    <!-- Pinterest-style hover "Save" button on article and content images -->
+    <script>
+      function initPinHoverButtons() {
+        const images = document.querySelectorAll<HTMLImageElement>(
+          '.post-body img, .featured-img-wrapper img'
+        );
+
+        images.forEach((img) => {
+          const host = img.parentElement;
+          if (!host || host.classList.contains('pin-hover-host')) return;
+
+          host.classList.add('pin-hover-host');
+
+          const src = img.getAttribute('src') || '';
+          const mediaUrl = new URL(src, window.location.href).href;
+          const description = img.getAttribute('alt') || document.title;
+
+          const btn = document.createElement('a');
+          btn.className = 'pin-hover-save';
+          btn.textContent = 'Save';
+          btn.target = '_blank';
+          btn.rel = 'noopener noreferrer';
+          btn.setAttribute('aria-label', `Save this image to Pinterest`);
+          btn.href = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(window.location.href)}&media=${encodeURIComponent(mediaUrl)}&description=${encodeURIComponent(description)}`;
+
+          host.appendChild(btn);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', initPinHoverButtons);
+    </script>
   </body>
 </html>
