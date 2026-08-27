@@ -26,7 +26,8 @@ const authorInitials = post.data.author.split(' ').map(n => n[0]).join('');
     <div class="card-overlay">
       <!-- Save (Pin) Button -->
       <button class="pin-save-btn" data-slug={post.id} aria-label={`Save ${post.data.title} study board`}>
-        Save
+        <svg class="pin-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.15-2.911 1.014 0 1.503.762 1.503 1.673 0 1.019-.65 2.541-.983 3.951-.279 1.184.593 2.148 1.762 2.148 2.107 0 3.732-2.221 3.732-5.437 0-2.845-2.043-4.833-4.96-4.833-3.379 0-5.362 2.535-5.362 5.156 0 1.014.394 2.107.878 2.702.09.106.104.201.078.31-.083.34-.269 1.078-.305 1.229-.048.202-.155.244-.359.148-1.343-.629-2.181-2.601-2.181-4.19 0-3.415 2.481-6.55 7.157-6.55 3.758 0 6.682 2.677 6.682 6.256 0 3.734-2.354 6.741-5.622 6.741-1.098 0-2.131-.571-2.484-1.245l-.673 2.567c-.244.939-.902 2.114-1.343 2.833.999.309 2.058.475 3.156.475 6.624 0 11.99-5.367 11.99-11.988C23.998 5.367 18.634.001 12.017.001z"/></svg>
+        <span class="pin-save-label">Save</span>
       </button>
       <a href={`/blog/${post.id}/`} class="card-action-circle" title={`Read ${post.data.title}`} aria-label={`Read ${post.data.title}`}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -66,30 +67,31 @@ const authorInitials = post.data.author.split(' ').map(n => n[0]).join('');
     saveBtns.forEach(btn => {
       const btnEl = btn as HTMLButtonElement;
       const slug = btnEl.dataset.slug || "";
-      
+      const label = btnEl.querySelector<HTMLElement>(".pin-save-label");
+
       // Initial state
       if (savedPins.includes(slug)) {
         btnEl.classList.add("saved");
-        btnEl.textContent = "Saved";
+        if (label) label.textContent = "Saved";
       }
 
       btnEl.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        
+
         savedPins = JSON.parse(localStorage.getItem("saved_pins") || "[]");
         const idx = savedPins.indexOf(slug);
-        
+
         if (idx === -1) {
           savedPins.push(slug);
           btnEl.classList.add("saved");
-          btnEl.textContent = "Saved";
+          if (label) label.textContent = "Saved";
         } else {
           savedPins.splice(idx, 1);
           btnEl.classList.remove("saved");
-          btnEl.textContent = "Save";
+          if (label) label.textContent = "Save";
         }
-        
+
         localStorage.setItem("saved_pins", JSON.stringify(savedPins));
       });
     });
