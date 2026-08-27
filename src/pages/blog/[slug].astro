@@ -639,9 +639,18 @@ const heroPinUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComp
     const errorText = document.getElementById("comment-error-text") as HTMLSpanElement;
 
     if (form) {
+      // Clear the error as soon as the user starts correcting either field
+      const clearCommentError = () => {
+        if (errorPanel.style.display === "flex") {
+          errorPanel.style.display = "none";
+        }
+      };
+      nameInput.addEventListener("input", clearCommentError);
+      textInput.addEventListener("input", clearCommentError);
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        
+
         successPanel.style.display = "none";
         errorPanel.style.display = "none";
 
