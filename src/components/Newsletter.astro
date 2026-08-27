@@ -123,6 +123,13 @@
     const errorMsg = document.getElementById("newsletter-error-msg") as HTMLSpanElement;
 
     if (form && emailInput && successPanel && errorPanel) {
+      // Clear the error as soon as the user starts correcting their input
+      emailInput.addEventListener("input", () => {
+        if (errorPanel.style.display === "flex") {
+          errorPanel.style.display = "none";
+        }
+      });
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         
