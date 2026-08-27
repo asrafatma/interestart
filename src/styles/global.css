@@ -469,27 +469,25 @@ footer {
   }
 }
 
-/* Pinterest Masonry Feed */
+/* Pinterest-style Post Feed */
 .masonry-grid {
-  column-count: 3;
-  column-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
   width: 100%;
 }
 @media (max-width: 900px) {
   .masonry-grid {
-    column-count: 2;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 600px) {
   .masonry-grid {
-    column-count: 1;
+    grid-template-columns: 1fr;
   }
 }
 
 .masonry-item {
-  break-inside: avoid;
-  margin-bottom: 1.5rem;
-  display: inline-block;
   width: 100%;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -537,6 +535,9 @@ footer {
 }
 
 .pin-save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   background-color: var(--color-accent);
   color: #fff;
   border: none;
@@ -548,6 +549,11 @@ footer {
   box-shadow: var(--shadow-sm);
   transform: translateY(6px) scale(0.92);
   transition: var(--transition-fast);
+}
+.pin-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }
 .masonry-item:hover .pin-save-btn {
   transform: translateY(0) scale(1);
@@ -569,6 +575,9 @@ footer {
   top: 0.75rem;
   left: 0.75rem;
   z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   padding: 0.4rem 1rem;
   border-radius: var(--radius-lg);
   background-color: var(--color-accent);
