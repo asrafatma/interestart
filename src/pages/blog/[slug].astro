@@ -79,6 +79,8 @@ const jsonLd = {
 };
 
 const authorInitials = post.data.author.split(' ').map(n => n[0]).join('');
+
+const heroPinUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(new URL(post.data.heroImage, siteConfig.siteUrl).href)}&description=${encodeURIComponent(post.data.heroAlt)}`;
 ---
 
 <Layout 
@@ -100,7 +102,9 @@ const authorInitials = post.data.author.split(' ').map(n => n[0]).join('');
       <img src={post.data.heroImage} alt={post.data.heroAlt} />
     </div>
     <div class="post-header-overlay" aria-hidden="true"></div>
-    
+
+    <a href={heroPinUrl} target="_blank" rel="noopener noreferrer" class="post-header-save-btn" aria-label="Save this image to Pinterest">Save</a>
+
     <div class="post-header-container">
       <nav class="post-breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Feed</a>
@@ -327,6 +331,32 @@ const authorInitials = post.data.author.split(' ').map(n => n[0]).join('');
     margin: 0 auto;
     padding: 3rem 2rem;
     color: #f5efe7;
+  }
+  .post-header-save-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 4;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-accent);
+    color: #fff !important;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    transform: translateY(6px) scale(0.92);
+    transition: var(--transition-fast);
+    pointer-events: none;
+  }
+  .post-cinematic-header:hover .post-header-save-btn {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .post-header-save-btn:hover {
+    background-color: var(--color-charcoal);
   }
   
   .post-breadcrumbs {
