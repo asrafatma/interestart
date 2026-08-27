@@ -546,7 +546,11 @@ footer {
   font-weight: 600;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
+  transform: translateY(6px) scale(0.92);
   transition: var(--transition-fast);
+}
+.masonry-item:hover .pin-save-btn {
+  transform: translateY(0) scale(1);
 }
 .pin-save-btn:hover {
   background-color: var(--color-charcoal);
@@ -554,6 +558,37 @@ footer {
 .pin-save-btn.saved {
   background-color: var(--color-charcoal);
   color: var(--color-background);
+}
+
+/* Universal hover "Save" button for article/content images (see Layout.astro script) */
+.pin-hover-host {
+  position: relative;
+}
+.pin-hover-save {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 5;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-accent);
+  color: #fff !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  transform: translateY(6px) scale(0.92);
+  transition: var(--transition-fast);
+  pointer-events: none;
+}
+.pin-hover-host:hover .pin-hover-save {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.pin-hover-save:hover {
+  background-color: var(--color-charcoal);
 }
 
 .card-action-circle {
