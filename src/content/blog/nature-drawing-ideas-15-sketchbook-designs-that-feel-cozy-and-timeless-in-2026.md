@@ -119,7 +119,14 @@ Not everyone has easy access to woodland, and that's fine — most of these idea
 
 ## Materials That Actually Help
 
-You don't need much to start any of these. A soft graphite pencil (a 4B or 6B), a fine-tip pen for line work, and a small set of muted watercolors cover almost everything above. A stick of vine or compressed charcoal is worth adding too, specifically for looser scenes like the woodland floor study, where soft pencil alone can feel too tidy. Toned or cream-colored paper suits nature subjects better than stark white — it echoes the warmth of dried leaves and bark instead of fighting against it, and it means you don't need to fill in every background with shading just to avoid a stark white gap. If you're drawing outside, a small board or clipboard and a pencil case that fits in a coat pocket will get used far more often than a full art bag that stays home, simply because it's easier to grab on the way out the door.
+You don't need much to start any of these. Here's what actually gets used, page after page:
+
+- **A soft graphite pencil (4B or 6B)** — covers most of the single-subject studies above, from pressed leaves to windowsill plants.
+- **A fine-tip pen** — for the ink line work in ideas like the botanical line studies and the feather wall, where clean, deliberate marks matter more than shading.
+- **A small set of muted watercolors** — just enough for the light washes used on the shell studies and seasonal grid; you don't need more than six or eight colors.
+- **Vine or compressed charcoal** — worth adding specifically for looser scenes like the woodland floor study, where soft pencil alone can feel too tidy.
+- **Toned or cream-colored paper** — suits nature subjects better than stark white, since it echoes the warmth of dried leaves and bark instead of fighting against it, and means you don't need to shade in every background just to avoid a blank white gap.
+- **A small board or clipboard, plus a pencil case that fits in a coat pocket** — for drawing outside. It gets used far more often than a full art bag that stays home, simply because it's easier to grab on the way out the door.
 
 ## Building the Habit
 
