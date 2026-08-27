@@ -793,7 +793,6 @@ footer {
   background-color: #e6f4ea;
   color: #137333;
   border: 1px solid #c2e7cd;
-  display: flex;
   align-items: center;
   gap: 0.5rem;
 }
@@ -801,7 +800,6 @@ footer {
   background-color: #fce8e6;
   color: #c5221f;
   border: 1px solid #fad2cf;
-  display: flex;
   align-items: center;
   gap: 0.5rem;
 }
