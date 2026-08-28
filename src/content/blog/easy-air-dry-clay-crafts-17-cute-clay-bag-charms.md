@@ -2,19 +2,22 @@
 title: "Easy Air Dry Clay Crafts: 17 Cute Clay Bag Charms to Make"
 description: "17 easy air dry clay bag charm ideas with step-by-step tips on shaping, painting, and sealing. A beginner-friendly craft project for personalizing totes, backpacks, and purses."
 excerpt: "Bag charms have taken over totes, backpacks, and everyday purses, and air dry clay is the easiest way to make your own. Here are 17 cute, beginner-friendly designs to try."
-category: "Pottery & Sculpture"
-slug: "easy-air-dry-clay-crafts-17-cute-clay-bag-charms"
-date: 2026-08-28
+category: "Sculpture and Pottery"
+categorySlug: "sculpture-pottery"
+date: "2026-08-28"
+displayDate: "August 28, 2026"
+readTime: "9 min read"
 heroImage: "/images/easy-air-dry-clay-crafts-17-cute-clay-bag-charms/hero3.webp"
-pinterestImage: "/images/easy-air-dry-clay-crafts-17-cute-clay-bag-charms/pinterest-pin.webp"
-ogImage: "/images/easy-air-dry-clay-crafts-17-cute-clay-bag-charms/og-image.webp"
 heroAlt: "A flat lay of handmade air dry clay bag charms in cream, sage, and terracotta tones arranged on a linen surface"
 author: "Asra Fatma"
 tags: ["air dry clay", "bag charms", "clay sculpting", "clay charms", "beginner pottery", "hand-built clay", "kawaii clay", "handmade accessories"]
 keywords: ["air dry clay bag charms", "hand sculpted clay charms", "air dry clay sculpting", "how to make clay charms", "cute clay charm ideas", "easy air dry clay projects"]
+featured: false
+draft: false
+seasonal: false
+pinterestImage: "/images/easy-air-dry-clay-crafts-17-cute-clay-bag-charms/hero3.webp"
+ogImage: "/images/easy-air-dry-clay-crafts-17-cute-clay-bag-charms/og-image.webp"
 toc: true
-seoTitle: "17 Easy Air Dry Clay Bag Charms to Make at Home"
-seoDescription: "Learn how to make 17 cute air dry clay bag charms with this easy step-by-step guide, including shaping, painting, and sealing tips for beginners."
 ---
 
 # Easy Air Dry Clay Crafts: 17 Cute Clay Bag Charms to Make
