@@ -2,9 +2,12 @@
 title: "21 Mini Watercolor Painting Ideas for Beginners That Are Easy and Beautiful"
 description: "21 easy mini watercolor painting ideas perfect for beginners — small, simple designs you can finish in one sitting with basic supplies and no pressure."
 excerpt: "From tiny florals to pocket-sized skies, these 21 mini watercolor ideas are simple enough for first-timers and pretty enough to frame."
-category: "Fine Art & Painting"
+category: "Fine Art and Painting"
+categorySlug: "painting"
 slug: "mini-watercolor-painting-ideas-for-beginners"
 date: "2026-08-29"
+displayDate: "August 29, 2026"
+readTime: "7 min read"
 heroImage: "/images/mini-watercolor-painting-ideas-for-beginners/watercolor-minis-hero.webp"
 pinterestImage: "/images/mini-watercolor-painting-ideas-for-beginners/watercolor-minis-pinterest.webp"
 ogImage: "/images/mini-watercolor-painting-ideas-for-beginners/watercolor-minis-hero.webp"
@@ -24,6 +27,9 @@ keywords:
   - simple watercolor art ideas
 seoTitle: "21 Mini Watercolor Painting Ideas for Beginners (Easy & Beautiful)"
 seoDescription: "Try these 21 easy mini watercolor painting ideas for beginners. Small, simple designs that look beautiful and take just minutes to finish."
+featured: false
+draft: false
+seasonal: false
 toc: true
 ---
 
