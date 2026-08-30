@@ -7,7 +7,7 @@ categorySlug: "art-history"
 date: "2026-07-11"
 displayDate: "July 11, 2026"
 readTime: "7 min read"
-heroImage: "/images/charcoal_study.webp"
+heroImage: "/images/impressionism.webp"
 heroAlt: "A vintage charcoal sketch study resembling a classic art landscape"
 author: "Asra Fatma"
 tags: ["Art History", "Impressionism", "Monet", "French Art"]
