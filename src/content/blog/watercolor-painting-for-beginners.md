@@ -12,7 +12,7 @@ heroAlt: "Impressionist watercolor painting with soft cream and pastel hues"
 author: "Asra Fatma"
 tags: ["Watercolor", "Fine Art", "Painting", "Beginner Art"]
 keywords: ["watercolor for beginners", "watercolor landscape tutorial", "learn to paint watercolors"]
-featured: true
+featured: false
 draft: false
 seasonal: false
 pinterestImage: "/images/fine_art.webp"
