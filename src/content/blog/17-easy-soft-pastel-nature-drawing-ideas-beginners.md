@@ -2,7 +2,7 @@
 title: "17 Easy Soft Pastel Nature Drawing Ideas for Beginners"
 description: "17 beginner-friendly soft pastel nature drawing ideas, plus the materials, blending techniques, and finishing tips you need to actually pull them off."
 excerpt: "From rolling hills to a single pinecone, here are 17 soft pastel nature ideas built for beginners — with the techniques that make each one work."
-category: " Aesthetic Pastel Art"
+category: "Aesthetic Pastel Art"
 categorySlug: "pastel-art"
 slug: "17-easy-soft-pastel-nature-drawing-ideas-beginners"
 date: "2026-08-31"
