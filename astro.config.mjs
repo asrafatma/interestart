@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -69,5 +70,6 @@ export default defineConfig({
       }
     })
   ],
+  adapter: vercel(),
   output: 'static'
 });
