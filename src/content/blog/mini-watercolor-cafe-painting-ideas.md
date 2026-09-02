@@ -2,7 +2,7 @@
 title: "17 Mini Watercolor Cafe Painting Ideas That Feel Like Tiny Sunday Mornings"
 description: "17 mini watercolor cafe painting ideas for small-format sketchbooks, from steaming espresso cups to rainy window scenes, with materials and technique tips for painting cozy cafe moments in miniature."
 excerpt: "Small paintings, big cozy feeling. Here are 17 mini watercolor cafe ideas — from latte art to rainy windows — sized for your pocket sketchbook."
-category: "Fine Art & Painting"
+category: "Fine Art and Painting"
 categorySlug: "fine-art-painting"
 date: "2026-09-02"
 displayDate: "September 2, 2026"
