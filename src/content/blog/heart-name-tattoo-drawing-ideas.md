@@ -13,9 +13,9 @@ author: "Asra Fatma"
 tags: ["tattoo drawing", "heart tattoo ideas", "name tattoo design", "line drawing", "sketchbook ideas", "minimalist drawing"]
 keywords: ["heart name tattoo drawing ideas", "name tattoo design drawing", "small heart tattoo sketch", "minimalist tattoo drawing ideas", "heart tattoo sketchbook"]
 featured: false
-draft: true
+draft: false
 seasonal: false
-pinterestImage: "/images/heart-name-tattoo-drawing-ideas/heart-name-tattoo-drawing-ideas-pinterest.webp"
+pinterestImage: "/images/heart-name-tattoo-drawing-ideas/heart-name-tattoo-drawing-ideas-hero.webp"
 ogImage: "/images/heart-name-tattoo-drawing-ideas/heart-name-tattoo-drawing-ideas-hero.webp"
 toc: true
 ---
