@@ -13,9 +13,9 @@ author: "Asra Fatma"
 tags: ["liminal space art", "digital illustration", "surreal digital art", "uncanny aesthetic", "digital painting ideas", "dreamcore art"]
 keywords: ["liminal space digital art ideas", "liminal digital illustration", "surreal digital art ideas", "liminal aesthetic art", "empty space digital painting"]
 featured: false
-draft: true
+draft: false
 seasonal: false
-pinterestImage: "/images/liminal-digital-art-ideas/liminal-digital-art-ideas-pinterest.webp"
+pinterestImage: "/images/liminal-digital-art-ideas/liminal-digital-art-ideas-hero.webp"
 ogImage: "/images/liminal-digital-art-ideas/liminal-digital-art-ideas-hero.webp"
 toc: true
 ---
