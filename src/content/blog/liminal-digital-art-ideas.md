@@ -3,7 +3,7 @@ title: "17 Liminal Digital Art Ideas: Surreal Scenes That Feel Like a Beautiful 
 description: "17 liminal space digital art ideas for illustrators, from empty malls and still pools to glitching hallways, with tips on lighting, color grading, and composition for building the uncanny, dreamlike liminal aesthetic."
 excerpt: "Empty rooms, wrong light, familiar spaces that feel just slightly off. 17 liminal digital art ideas and the techniques behind the aesthetic."
 category: "Digital Illustration"
-categorySlug: "digital-illustration"
+categorySlug: "digital-art"
 date: "2026-09-04"
 displayDate: "September 4, 2026"
 readTime: "11 min read"
