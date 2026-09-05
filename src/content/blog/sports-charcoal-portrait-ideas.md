@@ -15,7 +15,7 @@ keywords: ["sports charcoal portrait ideas", "charcoal drawing sports", "black a
 featured: false
 draft: false
 seasonal: false
-pinterestImage: "/images/sports-charcoal-portrait-ideas/sports-charcoal-portrait-ideas-pinterest.webp"
+pinterestImage: "/images/sports-charcoal-portrait-ideas/sports-charcoal-portrait-ideas-hero.webp"
 ogImage: "/images/sports-charcoal-portrait-ideas/sports-charcoal-portrait-ideas-hero.webp"
 toc: true
 ---
