@@ -4,7 +4,7 @@ description: "17 sports charcoal portrait ideas inspired by media day poses, fro
 excerpt: "Confident stances, hard side light, and the full range of charcoal's value scale. 17 sports-inspired charcoal portrait ideas."
 category: "Charcoal Art"
 categorySlug: "charcoal-art"
-slug: "17 Sports Charcoal Portrait Ideas: Turn Media Day Poses Into Dramatic Black-and-White Art"
+slug: "sports-charcoal-portrait-ideas"
 date: "2026-09-09"
 displayDate: "September 9, 2026"
 readTime: "11 min read"
