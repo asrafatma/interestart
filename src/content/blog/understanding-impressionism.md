@@ -15,8 +15,8 @@ keywords: ["impressionist art history", "claude monet techniques", "history of i
 featured: false
 draft: false
 seasonal: false
-pinterestImage: "/images/charcoal_study.webp"
-ogImage: "/images/charcoal_study.webp"
+pinterestImage: "/images/impressionism.webp"
+ogImage: "/images/impressionism.webp"
 toc: true
 ---
 
