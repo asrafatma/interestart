@@ -3,7 +3,7 @@ title: "17 Goth Pottery Ideas for a Moody Shelf: Bats, Moons and Dark Clay Detai
 description: "17 goth pottery ideas for hand-building and wheel-throwing, from bat trinket dishes and moon-phase wall sets to oxblood glazed bowls, with tips on dark clay, matte glazing, and carving gothic detail without looking cartoonish."
 excerpt: "Matte black glaze, moon-phase details, and just enough drama for a shelf. 17 goth pottery ideas for your next studio session."
 category: "Sculpture and Pottery"
-categorySlug: "pottery-sculpture"
+categorySlug: "sculpture-pottery"
 slug: "goth-pottery-ideas"
 date: "2026-09-07"
 displayDate: "September 7, 2026"
@@ -114,7 +114,9 @@ Three choices determine whether a piece reads as genuinely atmospheric or just f
 
 ![A finished dark speckled stoneware plate with a carved crescent moon border pattern, resting on a dark linen surface](/images/goth-pottery-ideas/goth-pottery-ideas-plate.webp)
 
-## Common Beginner Mistakes Testing your black glaze at different thicknesses on a sample tile before committing to a full piece reveals a surprising amount of tonal variation — thin applications often fire warmer or more brown-black, while thicker applications go cooler and denser. Knowing your glaze's range before you commit to a full piece prevents disappointing surprises after firing.
+## Common Beginner Mistakes
+
+Testing your black glaze at different thicknesses on a sample tile before committing to a full piece reveals a surprising amount of tonal variation — thin applications often fire warmer or more brown-black, while thicker applications go cooler and denser. Knowing your glaze's range before you commit to a full piece prevents disappointing surprises after firing.
 
 The second is overcrowding a single piece with motifs. A mug with a moon, a bat, a spiderweb, and lettering all competing for space reads as busy rather than moody. Choose one motif per piece and give it room.
 
