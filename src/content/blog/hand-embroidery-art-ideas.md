@@ -2,7 +2,7 @@
 title: "17 Hand Embroidery Art Ideas That Look Like Tiny Paintings"
 description: "17 hand embroidery art ideas using thread painting, satin stitch, and French knots, from landscapes and fruit still life to portrait details and abstract textures, with a guide to the stitches that create painterly shading."
 excerpt: "Thread can shade like paint if you know which stitches to reach for. 17 hand embroidery ideas built for painterly detail."
-category: "DIY & Crafts"
+category: "DIY and Crafts"
 categorySlug: "diy-crafts"
 slug: "hand-embroidery-art-ideas"
 date: "2026-09-08"
