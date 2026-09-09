@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { supabase } from '../../../lib/supabase';
+import { getSupabase } from '../../../lib/supabase';
 
 export const prerender = false;
 
@@ -12,6 +12,11 @@ export const GET: APIRoute = async ({ params }) => {
     return new Response(JSON.stringify({ error: 'Missing post slug.' }), { status: 400 });
   }
 
+  const { client: supabase, error: initError } = getSupabase();
+  if (!supabase) {
+    return new Response(JSON.stringify({ error: 'Comments database not configured.', details: initError }), { status: 500 });
+  }
+
   const { data, error } = await supabase
     .from('comments')
     .select('id, name, comment_text, created_at')
@@ -19,10 +24,10 @@ export const GET: APIRoute = async ({ params }) => {
     .order('created_at', { ascending: true });
 
   if (error) {
-    return new Response(JSON.stringify({ error: 'Could not load comments.' }), { status: 500 });
+    return new Response(JSON.stringify({ error: 'Could not load comments.', details: error.message }), { status: 500 });
   }
 
-  return new Response(JSON.stringify({ comments: data }), {
+  return new Response(JSON.stringify({ comments: data || [] }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' }
   });
@@ -32,6 +37,11 @@ export const POST: APIRoute = async ({ params, request }) => {
   const slug = params.slug;
   if (!slug) {
     return new Response(JSON.stringify({ error: 'Missing post slug.' }), { status: 400 });
+  }
+
+  const { client: supabase, error: initError } = getSupabase();
+  if (!supabase) {
+    return new Response(JSON.stringify({ error: 'Comments database not configured.', details: initError }), { status: 500 });
   }
 
   let body: { name?: string; comment?: string; website?: string };
@@ -63,7 +73,7 @@ export const POST: APIRoute = async ({ params, request }) => {
     .single();
 
   if (error) {
-    return new Response(JSON.stringify({ error: 'Could not save comment.' }), { status: 500 });
+    return new Response(JSON.stringify({ error: 'Could not save comment.', details: error.message }), { status: 500 });
   }
 
   return new Response(JSON.stringify({ comment: data }), {
