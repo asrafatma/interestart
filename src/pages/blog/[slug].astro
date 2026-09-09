@@ -175,9 +175,6 @@ const heroPinUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComp
           <a href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(new URL(post.data.heroImage, siteConfig.siteUrl).href)}&description=${encodeURIComponent(post.data.description)}`} target="_blank" rel="noopener noreferrer" class="share-btn pin-share" aria-label="Share on Pinterest" data-pin-do="none">
             Pinterest
           </a>
-          <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="share-btn twitter-share" aria-label="Share on Twitter">
-            Twitter
-          </a>
         </div>
       </div>
 
@@ -504,9 +501,6 @@ const heroPinUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComp
   }
   .pin-share {
     background-color: #bd081c;
-  }
-  .twitter-share {
-    background-color: #1da1f2;
   }
 
   /* Prev/Next post links */
