@@ -713,10 +713,15 @@ const heroPinUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComp
       if (!postSlug || !commentsList) return;
       try {
         const res = await fetch(`/api/comments/${encodeURIComponent(postSlug)}`);
-        if (!res.ok) throw new Error("Failed to load");
+        if (!res.ok) {
+          const errJson = await res.json().catch(() => ({}));
+          console.error("Comments API error:", res.status, errJson);
+          throw new Error(errJson.details || errJson.error || "Failed to load");
+        }
         const json = await res.json();
         renderComments(json.comments || []);
-      } catch {
+      } catch (err) {
+        console.error("Failed to load comments:", err);
         commentsList.innerHTML = '<p class="comments-empty-note">Could not load comments right now.</p>';
       }
     }
