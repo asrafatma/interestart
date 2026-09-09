@@ -1,10 +1,33 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY;
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing SUPABASE_URL or SUPABASE_ANON_KEY environment variables.');
+function getEnvVar(key: string): string | undefined {
+  if (typeof process !== 'undefined' && process.env && process.env[key]) {
+    return process.env[key];
+  }
+  // @ts-ignore
+  if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env[key]) {
+    // @ts-ignore
+    return import.meta.env[key];
+  }
+  return undefined;
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export function getSupabase(): { client: SupabaseClient | null; error: string | null } {
+  const url = getEnvVar('SUPABASE_URL');
+  const key = getEnvVar('SUPABASE_ANON_KEY');
+
+  if (!url || !key) {
+    return {
+      client: null,
+      error: `Missing environment variables. SUPABASE_URL: ${url ? 'set' : 'missing'}, SUPABASE_ANON_KEY: ${key ? 'set' : 'missing'}`
+    };
+  }
+
+  try {
+    const formattedUrl = url.startsWith('http://') || url.startsWith('https://') ? url : `https://${url}`;
+    const client = createClient(formattedUrl, key);
+    return { client, error: null };
+  } catch (err: any) {
+    return { client: null, error: err?.message || 'Failed to initialize Supabase client.' };
+  }
+}
