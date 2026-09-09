@@ -80,7 +80,7 @@ const jsonLd = {
 
 const authorInitials = post.data.author.split(' ').map(n => n[0]).join('');
 
-const heroPinUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(new URL(post.data.heroImage, siteConfig.siteUrl).href)}&description=${encodeURIComponent(post.data.heroAlt)}`;
+const heroPinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(new URL(post.data.heroImage, siteConfig.siteUrl).href)}&description=${encodeURIComponent(post.data.heroAlt)}`;
 ---
 
 <Layout 
@@ -172,7 +172,7 @@ const heroPinUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComp
       <div class="share-box">
         <h4>Share Study</h4>
         <div class="share-buttons">
-          <a href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(new URL(post.data.heroImage, siteConfig.siteUrl).href)}&description=${encodeURIComponent(post.data.description)}`} target="_blank" rel="noopener noreferrer" class="share-btn pin-share" aria-label="Share on Pinterest" data-pin-do="none">
+          <a href={`https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(new URL(post.data.heroImage, siteConfig.siteUrl).href)}&description=${encodeURIComponent(post.data.description)}`} target="_blank" rel="noopener noreferrer" class="share-btn pin-share" aria-label="Share on Pinterest" data-pin-do="none">
             Pinterest
           </a>
         </div>
