@@ -2,7 +2,7 @@
 title: "Urban Sketching Ideas: 13 Everyday City Scenes to Draw From Life"
 description: "13 urban sketching ideas for drawing everyday city scenes from life, plus the portable materials and quick-perspective techniques that make sketching in public actually doable."
 excerpt: "From a corner cafe table to a bus stop bench, here are 13 urban sketching ideas built for drawing fast, in public, with whatever's actually in front of you."
-category: "Drawing"
+category: "Sketching and Drawing"
 categorySlug: "drawing"
 slug: "urban-sketching-ideas-13-everyday-city-scenes"
 date: "2026-09-02"
