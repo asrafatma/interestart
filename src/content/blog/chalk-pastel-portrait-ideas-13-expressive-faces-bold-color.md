@@ -2,7 +2,7 @@
 title: "Chalk Pastel Portrait Ideas: 13 Expressive Ways to Draw Faces With Bold Color"
 description: "13 chalk pastel portrait ideas that use bold, non-naturalistic color instead of realistic skin tones, plus the color-blocking technique that makes expressive portraiture actually approachable."
 excerpt: "From a single feature study to a full stylized face, here are 13 chalk pastel portrait ideas built around bold color, not realism."
-category: "Pastel Art"
+category: "Aesthetic Pastel Art"
 categorySlug: "pastel-art"
 slug: "chalk-pastel-portrait-ideas-13-expressive-faces-bold-color"
 date: "2026-09-20"
