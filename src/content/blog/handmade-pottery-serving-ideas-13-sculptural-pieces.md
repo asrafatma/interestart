@@ -3,7 +3,7 @@ title: "Handmade Pottery Serving Ideas: 13 Sculptural Pieces for a Beautiful Tab
 description: "13 handmade pottery serving piece ideas for a beautiful table, plus the handbuilding and food-safe glazing basics that make functional ceramics actually usable."
 excerpt: "From a footed serving bowl to a small butter dish, here are 13 handbuilt pottery serving ideas designed to be both sculptural and genuinely functional at the table."
 category: "Sculpture and Pottery"
-categorySlug: "pottery-sculpture"
+categorySlug: "sculpture-pottery"
 slug: "handmade-pottery-serving-ideas-13-sculptural-pieces"
 date: "2026-09-23"
 displayDate: "September 23, 2026"
