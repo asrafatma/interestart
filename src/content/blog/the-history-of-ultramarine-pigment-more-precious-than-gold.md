@@ -2,7 +2,7 @@
 title: "The History of Ultramarine: The Pigment More Precious Than Gold"
 description: "The true story of ultramarine — the blue pigment ground from lapis lazuli that once cost more than gold, why Renaissance painters rationed it like treasure, and how a 19th-century chemist and a 20th-century artist each reinvented it."
 excerpt: "For centuries, this single color was priced by the ounce alongside gold. Here's why, who paid for it, and how it finally became affordable — and unforgettable."
-category: "Art History"
+category: "Art History Insights"
 categorySlug: "art-history"
 slug: "the-history-of-ultramarine-pigment-more-precious-than-gold"
 date: "2026-09-29"
