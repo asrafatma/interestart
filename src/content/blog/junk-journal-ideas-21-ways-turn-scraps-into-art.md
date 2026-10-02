@@ -2,7 +2,7 @@
 title: "Junk Journal Ideas: 21 Creative Ways to Turn Everyday Scraps Into Art"
 description: "21 junk journal ideas for turning everyday scraps into art, plus the materials, layering, and paper-aging techniques that make junk journaling genuinely satisfying."
 excerpt: "From a tea-stained cover to a hidden pocket page, here are 21 junk journal ideas built entirely from the scraps most people already have lying around."
-category: "DIY & Crafts"
+category: "DIY and Crafts"
 categorySlug: "diy-crafts"
 slug: "junk-journal-ideas-21-ways-turn-scraps-into-art"
 date: "2026-09-26"
