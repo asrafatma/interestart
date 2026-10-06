@@ -2,7 +2,7 @@
 title: "17 Abstract Acrylic Painting Ideas: Easy Techniques for Beginners to Try"
 description: "17 abstract acrylic painting ideas built around simple, forgiving techniques — palette knife texture, dripping, sponging, and more — no drawing skill required to start."
 excerpt: "From a loose color-field wash to a confident palette-knife texture study, here are 17 abstract acrylic ideas that make a strong painting out of technique alone."
-category: "Fine Art & Painting"
+category: "Fine Art and Painting"
 categorySlug: "fine-art-painting"
 slug: "17-abstract-acrylic-painting-ideas-easy-techniques-beginners"
 date: "2026-10-05"
