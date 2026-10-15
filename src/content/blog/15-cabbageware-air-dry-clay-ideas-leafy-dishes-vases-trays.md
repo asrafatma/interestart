@@ -9,7 +9,7 @@ date: "2026-10-15"
 displayDate: "October 15, 2026"
 readTime: "12 min read"
 heroImage: "/images/15-cabbageware-air-dry-clay-ideas-leafy-dishes-vases-trays/cabbageware-clay-hero.webp"
-heroAlt: " handmade air dry clay cabbageware dish with ruffled leaf edges and visible veins, beside a fresh savoy cabbage on a linen cloth"
+heroAlt: "A handmade air dry clay cabbageware dish with ruffled leaf edges and visible veins, beside a fresh savoy cabbage on a linen cloth"
 author: "Asra Fatma"
 tags: ["Sculpture and Pottery", "Air Dry Clay", "Cabbageware", "Handmade Decor", "Beginner Pottery"]
 keywords: ["cabbageware air dry clay", "cabbage leaf ceramics diy", "air dry clay ideas for beginners", "diy cabbage plate", "handmade clay trinket dish", "cabbage decor trend"]
