@@ -34,7 +34,7 @@ The good news for makers is that you do not need a kiln or a wheel to try it. A 
 - A few small bowls to use as drying forms, plus plastic wrap to line them
 - A damp sponge, a cup of water, and a little cornstarch for dusting
 
-**For finishing:**
+**For finishing/touchups:**
 - Fine sandpaper in two grits
 - Acrylic paints in cream, sage green, and a dusty purple
 - A soft brush for painting and a clear water-based varnish or a mix of PVA glue and water
