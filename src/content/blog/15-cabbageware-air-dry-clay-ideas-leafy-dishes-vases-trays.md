@@ -25,7 +25,7 @@ Pinterest's 2026 predictions crowned an unlikely star: the cabbage. The report's
 
 The good news for makers is that you do not need a kiln or a wheel to try it. A fresh cabbage, a rolling pin, and a block of air dry clay get you most of the way. This list collects 15 cabbageware ideas that a beginner can finish at a table, plus the pressing, drying, and sealing steps that keep air dry clay from cracking.
 
-## What You'll Need
+## What You Require
 
 **Essentials:**
 - A block of air dry clay (white or terracotta, both work)
