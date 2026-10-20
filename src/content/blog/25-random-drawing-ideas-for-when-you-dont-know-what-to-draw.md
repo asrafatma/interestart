@@ -3,7 +3,7 @@ title: "25 Random Drawing Ideas for When You Don't Know What to Draw (Plus 3 Way
 description: "25 random drawing ideas you can finish in 20 minutes or less, plus three simple ways to generate endless prompts yourself. Pencil, pen, and sketchbook friendly, with no experience needed."
 excerpt: "Searches for random drawing ideas are up 400% month over month. Here are 25 prompts that actually get you to the finish line."
 category: "Sketching and Drawing"
-categorySlug: "sketching-and-drawing"
+categorySlug: "drawing"
 slug: "25-random-drawing-ideas-for-when-you-dont-know-what-to-draw"
 date: "2026-10-20"
 displayDate: "October 20, 2026"
