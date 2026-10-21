@@ -2,7 +2,7 @@
 title: "17 No-Carve Pumpkin Ideas Inspired by Famous Art: Paint, Gild, and Decoupage Your Way to a Gallery Porch"
 description: "17 no-carve pumpkin ideas borrowed from famous art: Starry Night swirls, Klimt gold leaf, Mondrian grids, Hokusai waves, and more. Includes the prep, paint, and sealing tips that keep them looking good for weeks."
 excerpt: "Pinterest searches for DIY pumpkin decorations are exploding. Skip the carving knife and turn a pumpkin into a tiny museum piece instead."
-category: "DIY & Crafts"
+category: "DIY and Crafts"
 categorySlug: "diy-crafts"
 slug: "17-no-carve-pumpkin-ideas-inspired-by-famous-art"
 date: "2026-10-18"
