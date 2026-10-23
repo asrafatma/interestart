@@ -80,7 +80,10 @@ const jsonLd = {
 
 const authorInitials = post.data.author.split(' ').map(n => n[0]).join('');
 
-const heroPinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(new URL(post.data.heroImage, siteConfig.siteUrl).href)}&description=${encodeURIComponent(post.data.heroAlt)}`;
+const pinImage = post.data.pinterestImage || post.data.heroImage;
+const pinMediaUrl = new URL(pinImage, siteConfig.siteUrl).href;
+const pinDescription = post.data.description || post.data.heroAlt;
+const heroPinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(pinMediaUrl)}&description=${encodeURIComponent(pinDescription)}`;
 ---
 
 <Layout 
@@ -99,7 +102,7 @@ const heroPinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURI
   <!-- Cinematic Post Header -->
   <div class="post-cinematic-header">
     <div class="post-header-bg">
-      <img src={post.data.heroImage} alt={post.data.heroAlt} />
+      <img src={post.data.heroImage} alt={post.data.heroAlt} data-pin-media={pinMediaUrl} data-pin-description={pinDescription} />
     </div>
     <div class="post-header-overlay" aria-hidden="true"></div>
 
@@ -164,7 +167,7 @@ const heroPinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURI
       <!-- Optional Hidden Pinterest Reference -->
       {post.data.pinterestImage && (
         <div class="pinterest-pin-meta" style="display:none;" aria-hidden="true">
-          <img src={post.data.pinterestImage} alt={`Pinterest graphic: ${post.data.title}`} />
+          <img src={post.data.pinterestImage} alt={`Pinterest vertical pin: ${post.data.title}`} data-pin-media={pinMediaUrl} data-pin-description={pinDescription} />
         </div>
       )}
 
@@ -172,7 +175,7 @@ const heroPinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURI
       <div class="share-box">
         <h4>Share Study</h4>
         <div class="share-buttons">
-          <a href={`https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(new URL(post.data.heroImage, siteConfig.siteUrl).href)}&description=${encodeURIComponent(post.data.description)}`} target="_blank" rel="noopener noreferrer" class="share-btn pin-share" aria-label="Share on Pinterest" data-pin-do="none">
+          <a href={`https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(Astro.url.href)}&media=${encodeURIComponent(pinMediaUrl)}&description=${encodeURIComponent(pinDescription)}`} target="_blank" rel="noopener noreferrer" class="share-btn pin-share" aria-label="Share on Pinterest" data-pin-do="none">
             Pinterest
           </a>
         </div>
