@@ -4,16 +4,16 @@ import path from 'path';
 const blogDir = path.resolve('src/content/blog');
 const publicDir = path.resolve('public');
 
-const recognizedCategories = [
-  "Fine Art and Painting",
-  "Sketching and Drawing",
-  "Digital Illustration",
-  "Art History Insights",
-  "DIY and Crafts",
-  "Sculpture and Pottery",
-  "Aesthetic Pastel Art",
-  "Charcoal Art"
-];
+const recognizedCategoryMap = {
+  "Fine Art and Painting": "painting",
+  "Sketching and Drawing": "drawing",
+  "Digital Illustration": "digital-art",
+  "Art History Insights": "art-history",
+  "DIY and Crafts": "diy-crafts",
+  "Sculpture and Pottery": "sculpture-pottery",
+  "Aesthetic Pastel Art": "pastel-art",
+  "Charcoal Art": "charcoal-art"
+};
 
 function parseFrontmatter(content) {
   const match = content.match(/^---\r?\n([\s\S]+?)\r?\n---/);
@@ -116,10 +116,15 @@ function verify() {
       }
     }
 
-    // Check recognized category
-    if (frontmatter.category && !recognizedCategories.includes(frontmatter.category)) {
-      console.error(`[ERROR] Unrecognized category [${frontmatter.category}] in file ${file}.`);
-      hasErrors = true;
+    // Check recognized category and categorySlug pairing
+    if (frontmatter.category) {
+      if (!recognizedCategoryMap[frontmatter.category]) {
+        console.error(`[ERROR] Unrecognized category [${frontmatter.category}] in file ${file}.`);
+        hasErrors = true;
+      } else if (frontmatter.categorySlug !== recognizedCategoryMap[frontmatter.category]) {
+        console.error(`[ERROR] Invalid categorySlug [${frontmatter.categorySlug}] for category [${frontmatter.category}] in file ${file}. Expected [${recognizedCategoryMap[frontmatter.category]}].`);
+        hasErrors = true;
+      }
     }
 
     // Check image existence locally in public folder
