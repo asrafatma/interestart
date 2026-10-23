@@ -1,7 +1,7 @@
 ---
 title: "17 Pen Pal Digital Art Ideas: Stamps, Stickers, and Stationery to Draw and Print at Home"
 description: "17 pen pal digital art ideas you can actually finish: draw your own stamps, postmarks, envelope liners, wax-seal stickers, and letter sets once, then print them at home. Includes print settings and the USPS rules that matter."
-excerpt: "Searches for cute stamps and snail mail gifts are climbing. Here are 17 stationery projects you can draw in an evening and print on your own printer."
+excerpt: "From custom postage stamp designs to illustrated envelope liners, here are 17 stationery projects you can draw in an evening and print at home."
 category: "Digital Illustration"
 categorySlug: "digital-art"
 slug: "17-pen-pal-digital-art-ideas-stamps-stickers-stationery-print-at-home"
@@ -21,7 +21,7 @@ ogImage: "/images/17-pen-pal-digital-art-ideas-stamps-stickers-stationery-print-
 toc: true
 ---
 
-Pinterest's 2026 predictions flagged a quiet shift away from screens: searches for snail mail gifts were up 110%, cute stamps up 105%, and handwritten letters up 45%. People want something to hold, and that is a very good fit for digital illustration. You draw a design once on a tablet, then print it as many times as you like.
+There has been a quiet, sustained shift away from endless digital messaging toward physical mail and tangible keepsakes. Hand-illustrated envelopes, customized sticker seals, and handwritten letters bring an unmistakable warmth to modern friendships. Digital illustration is an ideal medium for this: you draw a thoughtful design once on your tablet, then print and share it as many times as you like.
 
 This list collects 17 pen pal and mail art ideas that one person can finish at a desk: stamps, postmarks, envelope liners, seals, stickers, and letter sets. Nothing here needs painterly skill. Most of it is simple flat shapes, a small palette, and a printer, and each idea comes with the practical detail that keeps it from falling apart at the cutting stage.
 
