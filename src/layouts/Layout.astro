@@ -147,9 +147,10 @@ const defaultJsonLd = {
 
           host.classList.add('pin-hover-host');
 
+          const pinMedia = img.getAttribute('data-pin-media');
           const src = img.getAttribute('src') || '';
-          const mediaUrl = new URL(src, window.location.href).href;
-          const description = img.getAttribute('alt') || document.title;
+          const mediaUrl = pinMedia ? new URL(pinMedia, window.location.href).href : new URL(src, window.location.href).href;
+          const description = img.getAttribute('data-pin-description') || img.getAttribute('alt') || document.title;
 
           const btn = document.createElement('a');
           btn.className = 'pin-hover-save';
