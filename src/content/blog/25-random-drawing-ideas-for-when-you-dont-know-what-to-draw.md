@@ -1,7 +1,7 @@
 ---
 title: "25 Random Drawing Ideas for When You Don't Know What to Draw (Plus 3 Ways to Generate Your Own)"
 description: "25 random drawing ideas you can finish in 20 minutes or less, plus three simple ways to generate endless prompts yourself. Pencil, pen, and sketchbook friendly, with no experience needed."
-excerpt: "Searches for random drawing ideas are up 400% month over month. Here are 25 prompts that actually get you to the finish line."
+excerpt: "When you want to sketch but have no idea where to start, here are 25 low-pressure prompts that will get your pencil moving in under five minutes."
 category: "Sketching and Drawing"
 categorySlug: "drawing"
 slug: "25-random-drawing-ideas-for-when-you-dont-know-what-to-draw"
@@ -23,7 +23,7 @@ toc: true
 
 You sit down with a fresh sketchbook page, a sharp pencil, and twenty free minutes. Then nothing. The blank page wins, and the sketchbook goes back on the shelf.
 
-That moment is exactly why "random drawing ideas" is climbing so fast on Pinterest, where it is up about 400% month over month. People do not lack talent. They lack a starting point that is small enough to actually begin.
+That hesitation is exactly why so many artists constantly look for fresh drawing prompts. People rarely lack the talent to create—they just lack a starting point that feels bite-sized and approachable enough to actually begin.
 
 This list gives you 25 of them. Each prompt is concrete, sized for one sitting, and built from everyday objects, so you can draw from real life or from a quick look at a photo. Before the list, there are three ways to generate your own prompts, so the page never goes blank again.
 
