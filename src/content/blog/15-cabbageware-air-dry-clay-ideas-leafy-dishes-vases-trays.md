@@ -3,7 +3,7 @@ title: "15 Cabbageware Air Dry Clay Ideas: Leafy Dishes, Vases, and Trays to Mak
 description: "15 cabbageware air dry clay ideas you can make at home: ring dishes, ruffled trays, a cabbage-head sculpture, and more, with the leaf-pressing, drying, and sealing steps that keep them from cracking."
 excerpt: "Cabbage-shaped ceramics are one of Pinterest's 2026 decor trends. Here are 15 air dry clay versions a beginner can finish at the kitchen table."
 category: "Sculpture and Pottery"
-categorySlug: "pottery-sculpture"
+categorySlug: "sculpture-pottery"
 slug: "15-cabbageware-air-dry-clay-ideas-leafy-dishes-vases-trays"
 date: "2026-10-15"
 displayDate: "October 15, 2026"
